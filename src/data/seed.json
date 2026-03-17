@@ -1,0 +1,136 @@
+{
+  "version": "1.0",
+  "siteContent": {
+    "agencyName": "Meridian Development Group",
+    "heroTitle": "Where Vision Meets Foundation",
+    "heroSubtitle": "Luxury real estate development across California's most coveted addresses.",
+    "aboutText": "Meridian Development Group is a boutique real estate development firm specializing in architecturally significant residential and mixed-use properties across California. With over two decades of experience, we transform prime locations into landmark addresses that redefine luxury living.",
+    "contactEmail": "acquisitions@meridiandg.com"
+  },
+  "properties": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "slug": "malibu-cliffside-residences",
+      "title": "Malibu Cliffside Residences",
+      "location": "Malibu, California",
+      "price": "$14,250,000",
+      "status": "Active",
+      "featured": true,
+      "specs": {
+        "sqft": 8200,
+        "beds": 6,
+        "baths": 7
+      },
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1800&q=85",
+        "altText": "Malibu Cliffside Residences overlooking the Pacific Ocean"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80",
+          "altText": "Exterior view of Malibu residence at dusk"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+          "altText": "Open-plan living room with ocean views"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+          "altText": "Chef's kitchen with marble countertops"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
+          "altText": "Primary suite with ocean-facing terrace"
+        }
+      ],
+      "description": "Perched above the Pacific on a private cliff face, Malibu Cliffside Residences represents the pinnacle of California coastal living. Six ensuite bedrooms flow through an open-plan architecture of board-form concrete and floor-to-ceiling glass. A seamless indoor-outdoor living experience, with an infinity pool cantilevered over the ocean and a private beach path."
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "slug": "bel-air-modern-estate",
+      "title": "Bel Air Modern Estate",
+      "location": "Bel Air, Los Angeles",
+      "price": "$22,000,000",
+      "status": "Active",
+      "featured": true,
+      "specs": {
+        "sqft": 12400,
+        "beds": 8,
+        "baths": 10
+      },
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1800&q=85",
+        "altText": "Bel Air Modern Estate aerial view"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+          "altText": "Front facade of Bel Air Estate"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80",
+          "altText": "Resort-style pool and terrace"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=80",
+          "altText": "Home theater and entertainment suite"
+        }
+      ],
+      "description": "Set on over an acre in the exclusive Bel Air hillside, this 12,400-square-foot estate commands panoramic views of the Los Angeles basin. The architect-designed residence features a dramatic double-height entry, a professional chef's kitchen, wine cellar, home theater, spa, and a resort-worthy pool terrace surrounded by mature olive groves."
+    },
+    {
+      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "slug": "santa-barbara-vineyard-compound",
+      "title": "Santa Barbara Vineyard Compound",
+      "location": "Santa Barbara, California",
+      "price": "$9,800,000",
+      "status": "Sold",
+      "featured": true,
+      "specs": {
+        "sqft": 7800,
+        "beds": 5,
+        "baths": 6
+      },
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1800&q=85",
+        "altText": "Santa Barbara vineyard compound at golden hour"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1200&q=80",
+          "altText": "Spanish-colonial main house entry"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1598928636135-d146006ff4be?w=1200&q=80",
+          "altText": "Courtyard with fountain and mature landscaping"
+        }
+      ],
+      "description": "A private compound spanning eight acres of working vineyard in the Santa Ynez foothills. The main residence pays homage to the region's Spanish-Colonial heritage with arched loggias, terracotta roofing, and hand-laid Saltillo tile — reinterpreted with thoroughly modern interiors. Includes a 3-acre Pinot Noir vineyard, guest casita, and 3-car garage with wine cellar."
+    },
+    {
+      "id": "d4e5f6a7-b8c9-0123-defa-234567890123",
+      "slug": "silverlake-glass-pavilion",
+      "title": "Silver Lake Glass Pavilion",
+      "location": "Silver Lake, Los Angeles",
+      "price": "$4,950,000",
+      "status": "Pre-Development",
+      "featured": false,
+      "specs": {
+        "sqft": 3600,
+        "beds": 4,
+        "baths": 4
+      },
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=85",
+        "altText": "Silver Lake Glass Pavilion architectural rendering"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+          "altText": "Architectural concept: open-plan interior"
+        }
+      ],
+      "description": "An upcoming architectural statement in Silver Lake's most coveted hillside pocket. The design centers on a single transparent volume of structural glass and weathered steel, positioned to maximize the iconic reservoir views. Currently in entitlement phase — projected delivery Q3 2026. Early interest contact available."
+    }
+  ]
+}

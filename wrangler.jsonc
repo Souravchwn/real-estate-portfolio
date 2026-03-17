@@ -1,0 +1,60 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "real-estate-portfolio",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-03-17",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".open-next/assets"
+	},
+	"images": {
+		// Enable image optimization
+		// see https://opennext.js.org/cloudflare/howtos/image
+		"binding": "IMAGES"
+	},
+	"services": [
+		{
+			// Self-reference service binding, the service name must match the worker name
+			// see https://opennext.js.org/cloudflare/caching
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "real-estate-portfolio"
+		}
+	],
+	"observability": {
+		"enabled": true
+	},
+
+	// The JSON Database (The Brain)
+	// Replace the id below with your actual KV namespace ID from the Cloudflare dashboard
+	"kv_namespaces": [
+		{
+			"binding": "MY_CMS_DATA",
+			"id": "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+		}
+	],
+
+	// The Media Warehouse (Images & Videos)
+	"r2_buckets": [
+		{
+			"binding": "ASSET_BUCKET",
+			"bucket_name": "real-estate-assets"
+		}
+	],
+
+	// Admin Panel Secret — override in Cloudflare Dashboard secrets for production
+	"vars": {
+		"ADMIN_SECRET": "dev-secret-change-me"
+	}
+}
