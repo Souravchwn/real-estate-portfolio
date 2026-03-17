@@ -8,7 +8,7 @@ export const runtime = 'edge';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Meridian Development Group — A boutique real estate development firm crafting architecturally significant properties across California.',
+  description: 'Orgho Development Group — A boutique real estate development firm crafting architecturally significant properties across California.',
 };
 
 export default async function AboutPage(): Promise<React.JSX.Element> {

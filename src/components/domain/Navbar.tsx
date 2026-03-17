@@ -23,7 +23,7 @@ export function Navbar(): React.JSX.Element {
             href="/"
             className="text-caption tracking-[0.2em] text-black hover:opacity-60 transition-opacity"
           >
-            Meridian<span className="text-neutral-400"> · </span>Dev Group
+            Orgho<span className="text-neutral-400"> · </span>Dev Group
           </Link>
 
           {/* Desktop Nav */}

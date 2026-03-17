@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/Button';
 export const runtime = 'edge';
 
 export const metadata: Metadata = {
-  title: 'Meridian Development Group — Luxury Real Estate California',
+  title: 'Orgho Development Group — Luxury Real Estate California',
   description: 'Boutique luxury real estate development across California\'s most coveted addresses. Architectural significance meets investment excellence.',
 };
 

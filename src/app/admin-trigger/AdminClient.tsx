@@ -42,7 +42,7 @@ export function AdminClient({ initialSchema }: AdminClientProps): React.JSX.Elem
       {/* Header */}
       <header className="border-b border-white/10 px-8 py-5 flex items-center justify-between">
         <div>
-          <p className="text-caption text-white/30 tracking-[0.2em] mb-0.5">Meridian Dev</p>
+          <p className="text-caption text-white/30 tracking-[0.2em] mb-0.5">Orgho Dev</p>
           <h1 className="text-sm font-medium text-white">Admin CMS — Edge Sync Portal</h1>
         </div>
         <span className="text-caption text-white/20 text-xs">Protected Route</span>
@@ -65,7 +65,7 @@ export function AdminClient({ initialSchema }: AdminClientProps): React.JSX.Elem
           <div>
             <p className="text-caption text-white/30 mb-3">Schema Structure</p>
             <pre className="text-xs text-white/40 leading-relaxed overflow-x-auto">
-{`{
+              {`{
   version: string
   siteContent: {
     agencyName

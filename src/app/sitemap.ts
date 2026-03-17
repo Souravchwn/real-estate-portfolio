@@ -4,7 +4,7 @@ import { getRepository } from '@/lib/repositories';
 export const runtime = 'edge';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://meridiandg.com'; // Update with your actual domain
+  const baseUrl = 'https://Orghodg.com'; // Update with your actual domain
 
   const repo = getRepository();
   const schema = await repo.getSchema();
