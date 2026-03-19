@@ -75,6 +75,8 @@ export function AdminClient({ initialSchema }: AdminClientProps): React.JSX.Elem
     contactEmail
   }
   properties: Property[]
+  places: Place[]
+  media: MediaItem[]
 }`}
             </pre>
           </div>

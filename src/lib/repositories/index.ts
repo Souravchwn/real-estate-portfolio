@@ -5,15 +5,14 @@
 
 import type { IDatabaseRepository } from './interfaces';
 import { LocalJsonRepository } from './local-repository';
-
-// We use the LocalJsonRepository for local development.
-// In a Cloudflare edge route, you would instantiate CloudflareKVRepository
-// by passing the KV binding from process.env or the request context.
-//
-// Example for an edge route:
-//   import { CloudflareKVRepository } from '@/lib/repositories/kv-repository';
-//   const repo = new CloudflareKVRepository(process.env.MY_CMS_DATA as unknown as KVNamespace);
+import { CloudflareKVRepository } from './kv-repository';
 
 export function getRepository(): IDatabaseRepository {
+  // In Cloudflare Workers/Pages, check if KV binding is available
+  if (typeof process !== 'undefined' && process.env.MY_CMS_DATA) {
+    return new CloudflareKVRepository(process.env.MY_CMS_DATA as unknown as KVNamespace);
+  }
+  
+  // Fallback to local JSON for development
   return new LocalJsonRepository();
 }

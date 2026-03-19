@@ -39,11 +39,14 @@
 	// The JSON Database (The Brain)
 	// Replace the id below with your actual KV namespace ID from the Cloudflare dashboard
 	"kv_namespaces": [
-		{
-			"binding": "MY_CMS_DATA",
-			"id": "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
-		}
-	],
+    {
+      "binding": "KV",
+      "id": "a5a48077b95746f4a89714186cb11600",
+      
+      // Optional: preview_id used when running `wrangler dev` for local dev
+      "preview_id": "<ID_OF_PREVIEW_KV_NAMESPACE_FOR_LOCAL_DEVELOPMENT>"
+    }
+    ],
 
 	// The Media Warehouse (Images & Videos)
 	"r2_buckets": [
@@ -55,6 +58,6 @@
 
 	// Admin Panel Secret — override in Cloudflare Dashboard secrets for production
 	"vars": {
-		"ADMIN_SECRET": "dev-secret-change-me"
+		"ADMIN_SECRET": "production"
 	}
 }

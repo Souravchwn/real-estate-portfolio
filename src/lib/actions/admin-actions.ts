@@ -19,6 +19,8 @@ function isValidSchema(data: unknown): data is DatabaseSchema {
   if (typeof d.version !== 'string') return false;
   if (!d.siteContent || typeof d.siteContent !== 'object') return false;
   if (!Array.isArray(d.properties)) return false;
+  if (!Array.isArray(d.places)) return false;
+  if (!Array.isArray(d.media)) return false;
   return true;
 }
 
