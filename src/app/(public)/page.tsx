@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/Button';
 export const runtime = 'edge';
 
 export const metadata: Metadata = {
-  title: 'Orgho Development Group — Luxury Real Estate California',
+  title: 'SITED Development Group — Luxury Real Estate California',
   description: 'Boutique luxury real estate development across California\'s most coveted addresses. Architectural significance meets investment excellence.',
 };
 
@@ -127,7 +127,7 @@ export default async function HomePage(): Promise<React.JSX.Element> {
                 Our portfolio spans coastal estates, hillside compounds, and urban penthouses — each
                 developed with a meticulous attention to material quality that ensures lasting premium.
               </p>
-              <Button as="link" href="/about" variant="ghost" className="border-b border-black rounded-none pb-1 px-0">
+              <Button as="link" href="/about" variant="ghost" className="border-b border-black rounded-none px-4 py-2">
                 About the Firm →
               </Button>
             </AnimatedSection>

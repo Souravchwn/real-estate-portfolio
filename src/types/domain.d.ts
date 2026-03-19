@@ -2,7 +2,8 @@
 // The strict domain contract for the entire application.
 // All data flowing through this site must conform to these types.
 
-export type PropertyStatus = 'Active' | 'Sold' | 'Pre-Development';
+export type PropertyStatus = 'MOVE' | 'BUILD' | 'OWN' | 'DROP';
+export type MediaType = 'Video' | 'Press' | 'Publication';
 
 export interface MediaAsset {
   url: string;
@@ -35,8 +36,36 @@ export interface SiteContent {
   contactEmail: string;
 }
 
+export interface Place {
+  id: string; // UUID v4
+  slug: string;
+  name: string;
+  description: string;
+  location: string;
+  heroImage: MediaAsset;
+  gallery: MediaAsset[];
+  stats: {
+    properties?: number;
+    avgPrice?: string;
+    neighborhoods?: number;
+  };
+}
+
+export interface MediaItem {
+  id: string; // UUID v4
+  slug: string;
+  title: string;
+  description: string;
+  mediaType: MediaType;
+  thumbnailImage: MediaAsset;
+  publishedDate: string;
+  externalUrl?: string;
+}
+
 export interface DatabaseSchema {
   version: string;
   siteContent: SiteContent;
   properties: Property[];
+  places: Place[];
+  media: MediaItem[];
 }

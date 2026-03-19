@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin-trigger', '/admin-trigger/'],
       },
     ],
-    sitemap: 'https://Orghodg.com/sitemap.xml',
+    sitemap: 'https://SITEDdg.com/sitemap.xml',
   };
 }

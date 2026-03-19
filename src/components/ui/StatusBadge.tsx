@@ -7,17 +7,21 @@ interface StatusBadgeProps {
 }
 
 const statusConfig: Record<PropertyStatus, { label: string; className: string }> = {
-  Active: {
-    label: 'Active',
+  MOVE: {
+    label: 'MOVE',
     className: 'bg-green-50 text-green-800 border-green-200',
   },
-  Sold: {
-    label: 'Sold',
-    className: 'bg-neutral-100 text-neutral-500 border-neutral-200',
-  },
-  'Pre-Development': {
-    label: 'Pre-Development',
+  BUILD: {
+    label: 'BUILD',
     className: 'bg-amber-50 text-amber-800 border-amber-200',
+  },
+  OWN: {
+    label: 'OWN',
+    className: 'bg-blue-50 text-blue-800 border-blue-200',
+  },
+  DROP: {
+    label: 'DROP',
+    className: 'bg-purple-50 text-purple-800 border-purple-200',
   },
 };
 

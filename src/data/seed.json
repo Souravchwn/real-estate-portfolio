@@ -1,11 +1,11 @@
 {
   "version": "1.0",
   "siteContent": {
-    "agencyName": "Orgho Development Group",
+    "agencyName": "SITED",
     "heroTitle": "Where Vision Meets Foundation",
     "heroSubtitle": "Luxury real estate development across California's most coveted addresses.",
-    "aboutText": "Orgho Development Group is a boutique real estate development firm specializing in architecturally significant residential and mixed-use properties across California. With over two decades of experience, we transform prime locations into landmark addresses that redefine luxury living.",
-    "contactEmail": "acquisitions@Orghodg.com"
+    "aboutText": "SITED Development Group is a boutique real estate development firm specializing in architecturally significant residential and mixed-use properties across California. With over two decades of experience, we transform prime locations into landmark addresses that redefine luxury living.",
+    "contactEmail": "acquisitions@SITEDdg.com"
   },
   "properties": [
     {
@@ -14,7 +14,7 @@
       "title": "Malibu Cliffside Residences",
       "location": "Malibu, California",
       "price": "$14,250,000",
-      "status": "Active",
+      "status": "MOVE",
       "featured": true,
       "specs": {
         "sqft": 8200,
@@ -51,7 +51,7 @@
       "title": "Bel Air Modern Estate",
       "location": "Bel Air, Los Angeles",
       "price": "$22,000,000",
-      "status": "Active",
+      "status": "BUILD",
       "featured": true,
       "specs": {
         "sqft": 12400,
@@ -84,7 +84,7 @@
       "title": "Santa Barbara Vineyard Compound",
       "location": "Santa Barbara, California",
       "price": "$9,800,000",
-      "status": "Sold",
+      "status": "OWN",
       "featured": true,
       "specs": {
         "sqft": 7800,
@@ -113,7 +113,7 @@
       "title": "Silver Lake Glass Pavilion",
       "location": "Silver Lake, Los Angeles",
       "price": "$4,950,000",
-      "status": "Pre-Development",
+      "status": "DROP",
       "featured": false,
       "specs": {
         "sqft": 3600,
@@ -131,6 +131,280 @@
         }
       ],
       "description": "An upcoming architectural statement in Silver Lake's most coveted hillside pocket. The design centers on a single transparent volume of structural glass and weathered steel, positioned to maximize the iconic reservoir views. Currently in entitlement phase — projected delivery Q3 2026. Early interest contact available."
+    }
+  ],
+  "places": [
+    {
+      "id": "p1a2b3c4-d5e6-7890-abcd-ef1234567890",
+      "slug": "malibu-coast",
+      "name": "Malibu Coast",
+      "description": "Oceanfront luxury along 27 miles of pristine Pacific coastline. Malibu represents the pinnacle of California coastal living, with exclusive gated communities, private beach access, and unobstructed ocean views. Home to some of the most architecturally significant residences in the world.",
+      "location": "Malibu, California",
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800&q=85",
+        "altText": "Malibu coastline with pristine beaches"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+          "altText": "Sunset over Malibu beaches"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80",
+          "altText": "Malibu coastal cliffs and rock formations"
+        }
+      ],
+      "stats": {
+        "properties": 12,
+        "avgPrice": "$18M",
+        "neighborhoods": 5
+      }
+    },
+    {
+      "id": "p2b3c4d5-e6f7-8901-bcde-f12345678901",
+      "slug": "beverly-hills",
+      "name": "Beverly Hills",
+      "description": "The epitome of Los Angeles luxury, Beverly Hills offers unparalleled prestige and privacy. Tree-lined streets, gated estates, and proximity to world-class dining and shopping define this iconic neighborhood. Home to Hollywood's elite and international high-net-worth individuals.",
+      "location": "Beverly Hills, California",
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1800&q=85",
+        "altText": "Beverly Hills luxury estates"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=80",
+          "altText": "Beverly Hills mansion architecture"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80",
+          "altText": "Luxury pool and entertainment areas"
+        }
+      ],
+      "stats": {
+        "properties": 18,
+        "avgPrice": "$22M",
+        "neighborhoods": 8
+      }
+    },
+    {
+      "id": "p3c4d5e6-f7a8-9012-cdef-123456789012",
+      "slug": "pacific-palisades",
+      "name": "Pacific Palisades",
+      "description": "Perched above the Pacific Ocean, Pacific Palisades combines coastal beauty with hillside sophistication. Dramatic bluff-top properties offer panoramic ocean views, while the neighborhood maintains a relaxed, community-oriented atmosphere. Perfect for those seeking both luxury and lifestyle.",
+      "location": "Pacific Palisades, California",
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1800&q=85",
+        "altText": "Pacific Palisades hillside properties"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80",
+          "altText": "Ocean view estates in Pacific Palisades"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+          "altText": "Modern architecture with ocean views"
+        }
+      ],
+      "stats": {
+        "properties": 9,
+        "avgPrice": "$16M",
+        "neighborhoods": 4
+      }
+    },
+    {
+      "id": "p4d5e6f7-a8b9-0123-defa-234567890123",
+      "slug": "newport-beach",
+      "name": "Newport Beach",
+      "description": "Orange County's premier coastal destination, Newport Beach offers waterfront living at its finest. Bayfront estates, yacht clubs, and pristine beaches create an exclusive enclave for discerning buyers. Known for its sophisticated community and world-class amenities.",
+      "location": "Newport Beach, California",
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1800&q=85",
+        "altText": "Newport Beach waterfront properties"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+          "altText": "Luxury bayfront homes"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80",
+          "altText": "Newport Harbor and yacht clubs"
+        }
+      ],
+      "stats": {
+        "properties": 14,
+        "avgPrice": "$20M",
+        "neighborhoods": 6
+      }
+    },
+    {
+      "id": "p5e6f7a8-b9c0-1234-efab-345678901234",
+      "slug": "san-francisco-heights",
+      "name": "San Francisco Heights",
+      "description": "San Francisco's most prestigious neighborhoods offer iconic architecture, cultural sophistication, and unparalleled city views. From Pacific Heights to Twin Peaks, these elevated addresses command some of the highest valuations in the nation. Urban luxury at its finest.",
+      "location": "San Francisco, California",
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1800&q=85",
+        "altText": "San Francisco skyline and architecture"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80",
+          "altText": "Victorian and modern architecture"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+          "altText": "City views from luxury homes"
+        }
+      ],
+      "stats": {
+        "properties": 11,
+        "avgPrice": "$19M",
+        "neighborhoods": 7
+      }
+    },
+    {
+      "id": "p6f7a8b9-c0d1-2345-fabc-456789012345",
+      "slug": "carmel-by-the-sea",
+      "name": "Carmel-by-the-Sea",
+      "description": "A picturesque coastal village on the Big Sur coast, Carmel-by-the-Sea combines artistic heritage with natural beauty. Charming cottages and contemporary estates nestle among cypress groves overlooking dramatic cliffs and pristine beaches. An exclusive retreat for the culturally refined.",
+      "location": "Carmel-by-the-Sea, California",
+      "heroImage": {
+        "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=85",
+        "altText": "Carmel-by-the-Sea coastal village"
+      },
+      "gallery": [
+        {
+          "url": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80",
+          "altText": "Carmel beach and cypress trees"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+          "altText": "Coastal cliffs and ocean views"
+        }
+      ],
+      "stats": {
+        "properties": 7,
+        "avgPrice": "$15M",
+        "neighborhoods": 3
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "m1a2b3c4-d5e6-7890-abcd-ef1234567890",
+      "slug": "architectural-digest-feature",
+      "title": "Architectural Digest Features Our Latest Development",
+      "description": "An in-depth look at our hillside compound project, exploring the intersection of architectural innovation and luxury living. The feature highlights our design philosophy and commitment to creating timeless residences.",
+      "mediaType": "Press",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+        "altText": "Architectural Digest magazine feature"
+      },
+      "publishedDate": "2024-03-15",
+      "externalUrl": "https://www.architecturaldigest.com"
+    },
+    {
+      "id": "m2b3c4d5-e6f7-8901-bcde-f12345678901",
+      "slug": "property-tour-malibu",
+      "title": "Virtual Tour: Malibu Cliffside Residences",
+      "description": "Experience the stunning Malibu Cliffside Residences through an immersive virtual tour. Explore every room, from the dramatic entry to the oceanfront master suite, and discover the seamless indoor-outdoor living experience.",
+      "mediaType": "Video",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+        "altText": "Malibu property virtual tour thumbnail"
+      },
+      "publishedDate": "2024-03-10",
+      "externalUrl": "https://www.youtube.com"
+    },
+    {
+      "id": "m3c4d5e6-f7a8-9012-cdef-123456789012",
+      "slug": "luxury-market-report-2024",
+      "title": "2024 California Luxury Real Estate Market Report",
+      "description": "Our comprehensive analysis of the luxury real estate market across California's premier locations. Includes market trends, price appreciation data, and investment insights for high-net-worth individuals.",
+      "mediaType": "Publication",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80",
+        "altText": "Market report cover"
+      },
+      "publishedDate": "2024-02-28"
+    },
+    {
+      "id": "m4d5e6f7-a8b9-0123-defa-234567890123",
+      "slug": "development-process-documentary",
+      "title": "From Vision to Reality: Our Development Process",
+      "description": "A behind-the-scenes documentary showcasing our development methodology, from site selection and architectural design through construction and final delivery. Featuring interviews with our team and project stakeholders.",
+      "mediaType": "Video",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+        "altText": "Development process documentary thumbnail"
+      },
+      "publishedDate": "2024-02-15",
+      "externalUrl": "https://www.youtube.com"
+    },
+    {
+      "id": "m5e6f7a8-b9c0-1234-efab-345678901234",
+      "slug": "forbes-interview",
+      "title": "Forbes Interview: The Future of Luxury Development",
+      "description": "Our founder discusses the evolving landscape of luxury real estate development, investment trends, and the importance of architectural integrity in creating lasting value.",
+      "mediaType": "Press",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+        "altText": "Forbes interview feature"
+      },
+      "publishedDate": "2024-02-01",
+      "externalUrl": "https://www.forbes.com"
+    },
+    {
+      "id": "m6f7a8b9-c0d1-2345-fabc-456789012345",
+      "slug": "investment-guide-coastal-properties",
+      "title": "The Investor's Guide to California Coastal Properties",
+      "description": "A detailed guide for investors considering coastal real estate acquisitions. Covers market dynamics, location analysis, and long-term value appreciation strategies for premium oceanfront properties.",
+      "mediaType": "Publication",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+        "altText": "Investment guide cover"
+      },
+      "publishedDate": "2024-01-20"
+    },
+    {
+      "id": "m7a8b9c0-d1e2-3456-abcd-567890123456",
+      "slug": "luxury-living-trends-2024",
+      "title": "Luxury Living Trends 2024: What High-Net-Worth Buyers Want",
+      "description": "An analysis of emerging preferences among luxury buyers, including smart home integration, wellness amenities, and sustainable design. Insights from our sales team and market research.",
+      "mediaType": "Press",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
+        "altText": "Luxury trends article"
+      },
+      "publishedDate": "2024-01-10",
+      "externalUrl": "https://www.luxurymagazine.com"
+    },
+    {
+      "id": "m8b9c0d1-e2f3-4567-bcde-678901234567",
+      "slug": "architectural-innovation-video",
+      "title": "Architectural Innovation: Pushing Design Boundaries",
+      "description": "A visual exploration of our most innovative architectural projects, showcasing cutting-edge design techniques, sustainable materials, and the integration of technology in luxury residential spaces.",
+      "mediaType": "Video",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+        "altText": "Architectural innovation video thumbnail"
+      },
+      "publishedDate": "2023-12-20",
+      "externalUrl": "https://www.youtube.com"
+    },
+    {
+      "id": "m9c0d1e2-f3a4-5678-cdef-789012345678",
+      "slug": "sustainability-in-luxury-development",
+      "title": "Sustainability in Luxury Development: A Case Study",
+      "description": "An examination of how we integrate sustainable practices and eco-friendly materials into luxury developments without compromising on aesthetics or performance. Includes LEED certification details and environmental impact analysis.",
+      "mediaType": "Publication",
+      "thumbnailImage": {
+        "url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+        "altText": "Sustainability case study cover"
+      },
+      "publishedDate": "2023-12-01"
     }
   ]
 }

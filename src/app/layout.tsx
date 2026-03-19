@@ -17,8 +17,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Orgho Development Group',
-    default: 'Orgho Development Group — Luxury Real Estate California',
+    template: '%s | SITED Development Group',
+    default: 'SITED Development Group — Luxury Real Estate California',
   },
   description:
     'Boutique luxury real estate development firm crafting landmark residences across California\'s most coveted addresses.',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'Orgho Development Group',
+    siteName: 'SITED Development Group',
   },
   twitter: {
     card: 'summary_large_image',

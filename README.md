@@ -1,4 +1,4 @@
-# Orgho Development Group — Premium Real Estate Edge Portfolio
+# SITED Development Group — Premium Real Estate Edge Portfolio
 
 A **high-performance, edge-native** luxury real estate portfolio website for a California development firm. Built on Next.js 16 + Cloudflare Pages/KV/R2 with a California Minimalism design aesthetic.
 

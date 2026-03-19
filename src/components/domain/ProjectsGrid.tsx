@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import type { Property, PropertyStatus } from '@/types/domain';
 import { PropertyCard } from '@/components/domain/PropertyCard';
 import { cn } from '@/lib/utils';
@@ -11,13 +12,24 @@ interface ProjectsGridProps {
 
 const ALL_FILTERS: Array<{ label: string; value: PropertyStatus | 'All' }> = [
   { label: 'All', value: 'All' },
-  { label: 'Active', value: 'Active' },
-  { label: 'Pre-Development', value: 'Pre-Development' },
-  { label: 'Sold', value: 'Sold' },
+  { label: 'MOVE', value: 'MOVE' },
+  { label: 'BUILD', value: 'BUILD' },
+  { label: 'OWN', value: 'OWN' },
+  { label: 'DROP', value: 'DROP' },
 ];
 
 export function ProjectsGrid({ properties }: ProjectsGridProps): React.JSX.Element {
+  const searchParams = useSearchParams();
+  const filterParam = searchParams.get('filter') as PropertyStatus | null;
   const [activeFilter, setActiveFilter] = useState<PropertyStatus | 'All'>('All');
+
+  useEffect(() => {
+    if (filterParam && ALL_FILTERS.some((f) => f.value === filterParam)) {
+      setActiveFilter(filterParam);
+    } else if (!filterParam) {
+      setActiveFilter('All');
+    }
+  }, [filterParam]);
 
   const filtered = activeFilter === 'All'
     ? properties

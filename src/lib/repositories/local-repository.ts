@@ -3,7 +3,7 @@
 // Switch to this implementation by changing getRepository() in lib/repositories/index.ts
 
 import type { IDatabaseRepository } from './interfaces';
-import type { DatabaseSchema, Property } from '@/types/domain';
+import type { DatabaseSchema, Property, Place, MediaItem } from '@/types/domain';
 import seedData from '@/data/seed.json';
 
 export class LocalJsonRepository implements IDatabaseRepository {
@@ -19,6 +19,22 @@ export class LocalJsonRepository implements IDatabaseRepository {
 
   async getProperty(slug: string): Promise<Property | null> {
     return this.schema.properties.find((p) => p.slug === slug) ?? null;
+  }
+
+  async getPlaces(): Promise<Place[]> {
+    return this.schema.places;
+  }
+
+  async getPlace(slug: string): Promise<Place | null> {
+    return this.schema.places.find((p) => p.slug === slug) ?? null;
+  }
+
+  async getMedia(): Promise<MediaItem[]> {
+    return this.schema.media;
+  }
+
+  async getMediaItem(slug: string): Promise<MediaItem | null> {
+    return this.schema.media.find((m) => m.slug === slug) ?? null;
   }
 
   async updateSchema(data: DatabaseSchema): Promise<void> {

@@ -2,7 +2,7 @@
 // PRODUCTION: Reads/writes to Cloudflare KV via the MY_CMS_DATA binding.
 
 import type { IDatabaseRepository } from './interfaces';
-import type { DatabaseSchema, Property } from '@/types/domain';
+import type { DatabaseSchema, Property, Place, MediaItem } from '@/types/domain';
 
 const KV_KEY = 'site-schema-v1';
 
@@ -22,6 +22,26 @@ export class CloudflareKVRepository implements IDatabaseRepository {
   async getProperty(slug: string): Promise<Property | null> {
     const schema = await this.getSchema();
     return schema.properties.find((p) => p.slug === slug) ?? null;
+  }
+
+  async getPlaces(): Promise<Place[]> {
+    const schema = await this.getSchema();
+    return schema.places;
+  }
+
+  async getPlace(slug: string): Promise<Place | null> {
+    const schema = await this.getSchema();
+    return schema.places.find((p) => p.slug === slug) ?? null;
+  }
+
+  async getMedia(): Promise<MediaItem[]> {
+    const schema = await this.getSchema();
+    return schema.media;
+  }
+
+  async getMediaItem(slug: string): Promise<MediaItem | null> {
+    const schema = await this.getSchema();
+    return schema.media.find((m) => m.slug === slug) ?? null;
   }
 
   async updateSchema(data: DatabaseSchema): Promise<void> {

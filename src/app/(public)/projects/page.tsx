@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { getRepository } from '@/lib/repositories';
 import { ProjectsGrid } from '@/components/domain/ProjectsGrid';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
@@ -24,7 +25,9 @@ export default async function ProjectsPage(): Promise<React.JSX.Element> {
           </h1>
         </AnimatedSection>
 
-        <ProjectsGrid properties={schema.properties} />
+        <Suspense fallback={<div className="text-center py-20 text-neutral-400">Loading...</div>}>
+          <ProjectsGrid properties={schema.properties} />
+        </Suspense>
       </div>
     </section>
   );

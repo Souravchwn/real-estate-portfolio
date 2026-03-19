@@ -8,7 +8,7 @@ export const runtime = 'edge';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Reach out to discuss acquisition opportunities, joint ventures, or investment inquiries with Orgho Development Group.',
+  description: 'Reach out to discuss acquisition opportunities, joint ventures, or investment inquiries with SITED Development Group.',
 };
 
 export default async function ContactPage(): Promise<React.JSX.Element> {

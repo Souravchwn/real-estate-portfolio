@@ -6,9 +6,14 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { label: 'Portfolio', href: '/projects' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'MOVE', href: '/projects?filter=MOVE' },
+  { label: 'BUILD', href: '/projects?filter=BUILD' },
+  { label: 'OWN', href: '/projects?filter=OWN' },
+  { label: 'DROP', href: '/projects?filter=DROP' },
+  { label: 'PLACES', href: '/places' },
+  { label: 'MEDIA', href: '/media' },
 ];
 
 export function Navbar(): React.JSX.Element {
@@ -21,9 +26,9 @@ export function Navbar(): React.JSX.Element {
           {/* Logo */}
           <Link
             href="/"
-            className="text-caption tracking-[0.2em] text-black hover:opacity-60 transition-opacity"
+            className="text-caption tracking-[0.2em] text-black hover:opacity-60 transition-opacity font-bold"
           >
-            Orgho<span className="text-neutral-400"> · </span>Dev Group
+            SITED
           </Link>
 
           {/* Desktop Nav */}
