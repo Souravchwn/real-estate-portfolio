@@ -39,8 +39,8 @@
 	// Replace the id below with your actual KV namespace ID from the Cloudflare dashboard
 	"kv_namespaces": [
 		{
-			"binding": "KV",
-			"id": "a5a48077b95746f4a89714186cb11600",
+			"binding": "real-estate-portfolio",
+			"id": "a5a48077b95746f4a89714186cb11600"
 		}
 	],
 	// Admin Panel Secret — override in Cloudflare Dashboard secrets for production
