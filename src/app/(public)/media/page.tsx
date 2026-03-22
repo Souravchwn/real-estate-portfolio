@@ -3,7 +3,7 @@ import { getRepository } from '@/lib/repositories';
 import { MediaGrid } from '@/components/domain/MediaGrid';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
-export const runtime = 'edge';
+
 
 export const metadata: Metadata = {
   title: 'Media',

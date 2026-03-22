@@ -4,7 +4,7 @@ import { getRepository } from '@/lib/repositories';
 import { ProjectsGrid } from '@/components/domain/ProjectsGrid';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
-export const runtime = 'edge';
+
 
 export const metadata: Metadata = {
   title: 'Portfolio',

@@ -8,6 +8,17 @@ import { revalidatePath } from 'next/cache';
 import { getRepository } from '@/lib/repositories';
 import type { DatabaseSchema } from '@/types/domain';
 
+/**
+ * Verifies the provided secret against the ADMIN_SECRET env var.
+ * Returns true if correct (or if no real secret is set — dev mode).
+ */
+export async function verifyAdminSecret(provided: string): Promise<boolean> {
+  const secret = process.env.ADMIN_SECRET;
+  // In dev mode (no secret or placeholder), bypass the check
+  if (!secret || secret === 'dev-secret-change-me') return true;
+  return provided === secret;
+}
+
 interface AdminActionResult {
   success: boolean;
   error?: string;

@@ -4,7 +4,7 @@ import { getRepository } from '@/lib/repositories';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Button } from '@/components/ui/Button';
 
-export const runtime = 'edge';
+
 
 export const metadata: Metadata = {
   title: 'About',

@@ -3,7 +3,7 @@ import { getRepository } from '@/lib/repositories';
 import { PlacesGrid } from '@/components/domain/PlacesGrid';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
-export const runtime = 'edge';
+
 
 export const metadata: Metadata = {
   title: 'Places',

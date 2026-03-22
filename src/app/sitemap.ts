@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getRepository } from '@/lib/repositories';
 
-export const runtime = 'edge';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://SITEDdg.com'; // Update with your actual domain

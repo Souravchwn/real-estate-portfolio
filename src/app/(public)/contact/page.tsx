@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/domain/ContactForm';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Mail, MapPin } from 'lucide-react';
 
-export const runtime = 'edge';
+
 
 export const metadata: Metadata = {
   title: 'Contact',

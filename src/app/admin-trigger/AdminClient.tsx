@@ -2,17 +2,177 @@
 
 // app/admin-trigger/AdminClient.tsx
 // The Client Component for the Admin CMS portal.
-// Receives the current live schema from the Server Component to pre-populate the editor.
+// Has a fullscreen secret-entry gate before showing the CMS editor.
 
-import { useState, useTransition } from 'react';
-import { updateSiteSchema } from '@/lib/actions/admin-actions';
+import { useState, useTransition, useRef, useEffect } from 'react';
+import { updateSiteSchema, verifyAdminSecret } from '@/lib/actions/admin-actions';
 import type { DatabaseSchema } from '@/types/domain';
 
 interface AdminClientProps {
   initialSchema: DatabaseSchema;
 }
 
-export function AdminClient({ initialSchema }: AdminClientProps): React.JSX.Element {
+/* ─────────────────────────────────────────────
+   Lock Screen
+───────────────────────────────────────────── */
+function LockScreen({ onUnlock }: { onUnlock: () => void }) {
+  const [secret, setSecret] = useState('');
+  const [error, setError] = useState('');
+  const [isPending, startTransition] = useTransition();
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!secret.trim()) return;
+    setError('');
+
+    startTransition(async () => {
+      const ok = await verifyAdminSecret(secret);
+      if (ok) {
+        onUnlock();
+      } else {
+        setError('Invalid secret. Access denied.');
+        setSecret('');
+        inputRef.current?.focus();
+      }
+    });
+  }
+
+  return (
+    <div className="min-h-screen bg-neutral-950 flex items-center justify-center p-6">
+      {/* Ambient glow */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          background:
+            'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 70%)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '420px',
+          border: '1px solid rgba(255,255,255,0.1)',
+          background: 'rgba(255,255,255,0.03)',
+          backdropFilter: 'blur(24px)',
+          borderRadius: '4px',
+          padding: '48px 40px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '32px',
+        }}
+      >
+        {/* Icon */}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div
+            style={{
+              width: '52px',
+              height: '52px',
+              borderRadius: '50%',
+              border: '1px solid rgba(255,255,255,0.15)',
+              background: 'rgba(255,255,255,0.06)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Header */}
+        <div style={{ textAlign: 'center' }}>
+          <p style={{ fontSize: '10px', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.25)', marginBottom: '8px', textTransform: 'uppercase' }}>
+            SITED Dev
+          </p>
+          <h1 style={{ fontSize: '18px', fontWeight: 500, color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>
+            Admin CMS
+          </h1>
+          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.35)', lineHeight: 1.6 }}>
+            Enter your admin secret to access the Edge Sync Portal.
+          </p>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ position: 'relative' }}>
+            <input
+              ref={inputRef}
+              id="admin-secret-input"
+              type="password"
+              value={secret}
+              onChange={(e) => setSecret(e.target.value)}
+              placeholder="••••••••••••••••"
+              autoComplete="current-password"
+              disabled={isPending}
+              style={{
+                width: '100%',
+                background: 'rgba(255,255,255,0.05)',
+                border: error ? '1px solid rgba(248,113,113,0.6)' : '1px solid rgba(255,255,255,0.12)',
+                borderRadius: '3px',
+                padding: '12px 16px',
+                fontSize: '14px',
+                color: 'white',
+                outline: 'none',
+                fontFamily: 'monospace',
+                letterSpacing: '0.08em',
+                transition: 'border-color 0.2s',
+                boxSizing: 'border-box',
+              }}
+            />
+          </div>
+
+          {error && (
+            <p style={{ fontSize: '12px', color: 'rgba(248,113,113,0.9)', textAlign: 'center' }}>
+              {error}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={isPending || !secret.trim()}
+            style={{
+              background: isPending ? 'rgba(255,255,255,0.5)' : 'white',
+              color: 'black',
+              border: 'none',
+              borderRadius: '3px',
+              padding: '12px 24px',
+              fontSize: '13px',
+              fontWeight: 500,
+              cursor: isPending || !secret.trim() ? 'not-allowed' : 'pointer',
+              opacity: !secret.trim() ? 0.4 : 1,
+              transition: 'opacity 0.2s, background 0.2s',
+              letterSpacing: '0.03em',
+            }}
+          >
+            {isPending ? 'Verifying...' : 'Unlock Portal →'}
+          </button>
+        </form>
+
+        {/* Footer hint */}
+        <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.2)', textAlign: 'center' }}>
+          Set <code style={{ background: 'rgba(255,255,255,0.08)', padding: '1px 4px', borderRadius: '2px' }}>ADMIN_SECRET</code> in Cloudflare Dashboard
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   CMS Editor
+───────────────────────────────────────────── */
+function CMSEditor({ initialSchema }: { initialSchema: DatabaseSchema }) {
   const [jsonInput, setJsonInput] = useState(JSON.stringify(initialSchema, null, 2));
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
@@ -26,7 +186,7 @@ export function AdminClient({ initialSchema }: AdminClientProps): React.JSX.Elem
       setResult({
         success: res.success,
         message: res.success
-          ? '✓ Schema deployed to Edge successfully. All 300+ nodes are now updated.'
+          ? '✓ Schema deployed to Edge successfully. All nodes are now updated.'
           : `✗ ${res.error}`,
       });
     });
@@ -45,7 +205,25 @@ export function AdminClient({ initialSchema }: AdminClientProps): React.JSX.Elem
           <p className="text-caption text-white/30 tracking-[0.2em] mb-0.5">SITED Dev</p>
           <h1 className="text-sm font-medium text-white">Admin CMS — Edge Sync Portal</h1>
         </div>
-        <span className="text-caption text-white/20 text-xs">Protected Route</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '11px',
+              color: 'rgba(74,222,128,0.8)',
+              background: 'rgba(74,222,128,0.08)',
+              border: '1px solid rgba(74,222,128,0.2)',
+              borderRadius: '20px',
+              padding: '3px 10px',
+            }}
+          >
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'rgba(74,222,128,0.8)', display: 'inline-block' }} />
+            Authenticated
+          </span>
+          <span className="text-caption text-white/20 text-xs">Protected Route</span>
+        </div>
       </header>
 
       {/* Main */}
@@ -128,4 +306,17 @@ export function AdminClient({ initialSchema }: AdminClientProps): React.JSX.Elem
       </main>
     </div>
   );
+}
+
+/* ─────────────────────────────────────────────
+   Root Export — manages lock/unlock state
+───────────────────────────────────────────── */
+export function AdminClient({ initialSchema }: AdminClientProps): React.JSX.Element {
+  const [unlocked, setUnlocked] = useState(false);
+
+  if (!unlocked) {
+    return <LockScreen onUnlock={() => setUnlocked(true)} />;
+  }
+
+  return <CMSEditor initialSchema={initialSchema} />;
 }

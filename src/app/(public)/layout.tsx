@@ -3,7 +3,6 @@ import { getRepository } from '@/lib/repositories';
 import { Navbar } from '@/components/domain/Navbar';
 import { Footer } from '@/components/domain/Footer';
 
-export const runtime = 'edge';
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

@@ -7,7 +7,7 @@ import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Button } from '@/components/ui/Button';
 import { ExternalLink, Calendar } from 'lucide-react';
 
-export const runtime = 'edge';
+
 
 interface PageProps {
   params: Promise<{ slug: string }>;

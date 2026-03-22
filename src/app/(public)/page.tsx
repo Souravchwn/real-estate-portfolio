@@ -6,7 +6,6 @@ import { PropertyCard } from '@/components/domain/PropertyCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Button } from '@/components/ui/Button';
 
-export const runtime = 'edge';
 
 export const metadata: Metadata = {
   title: 'SITED Development Group — Luxury Real Estate California',
