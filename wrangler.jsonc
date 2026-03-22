@@ -45,6 +45,6 @@
 	],
 	// Admin Panel Secret — override in Cloudflare Dashboard secrets for production
 	"vars": {
-		"ADMIN_SECRET": "production"
+		"ADMIN_SECRET": "dev-secret-change-me"
 	}
 }
