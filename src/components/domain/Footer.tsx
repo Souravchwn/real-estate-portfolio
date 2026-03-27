@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface FooterProps {
   agencyName: string;
@@ -14,7 +15,14 @@ export function Footer({ agencyName, contactEmail }: FooterProps): React.JSX.Ele
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Brand */}
           <div>
-            <p className="text-caption tracking-[0.2em] text-black mb-1">{agencyName}</p>
+            <Image
+              src="/logo-black.svg"
+              alt={agencyName}
+              width={100}
+              height={20}
+              unoptimized
+              className="mb-2"
+            />
             <p className="text-sm text-neutral-400">Luxury Real Estate Development · California</p>
           </div>
 
@@ -43,7 +51,6 @@ export function Footer({ agencyName, contactEmail }: FooterProps): React.JSX.Ele
           <p className="text-xs text-neutral-400">
             © {year} {agencyName}. All rights reserved.
           </p>
-          <p className="text-xs text-neutral-300">Edge-native · Built on Cloudflare</p>
         </div>
       </div>
     </footer>

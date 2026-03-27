@@ -19,7 +19,6 @@
 		"binding": "ASSETS",
 		"directory": ".open-next/assets"
 	},
-
 	"services": [
 		{
 			// Self-reference service binding, the service name must match the worker name

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -24,11 +25,15 @@ export function Navbar(): React.JSX.Element {
       <div className="container-site">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-caption tracking-[0.2em] text-black hover:opacity-60 transition-opacity font-bold"
-          >
-            SITED
+          <Link href="/" className="hover:opacity-70 transition-opacity">
+            <Image
+              src="/logo-black.svg"
+              alt="SITED"
+              width={120}
+              height={24}
+              priority
+              unoptimized
+            />
           </Link>
 
           {/* Desktop Nav */}
