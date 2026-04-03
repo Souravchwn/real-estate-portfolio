@@ -2,97 +2,97 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { MobileNav } from './MobileNav';
+
+const utilityLinks = [
+  { label: 'Find a Property', href: '/projects' },
+  { label: 'Media', href: '/media' },
+  { label: 'Contact', href: '/contact' },
+];
 
 const navLinks = [
-  { label: 'Home', href: '/' },
   { label: 'Projects', href: '/projects' },
   { label: 'MOVE', href: '/projects?filter=MOVE' },
   { label: 'BUILD', href: '/projects?filter=BUILD' },
   { label: 'OWN', href: '/projects?filter=OWN' },
   { label: 'DROP', href: '/projects?filter=DROP' },
-  { label: 'PLACES', href: '/places' },
-  { label: 'MEDIA', href: '/media' },
+  { label: 'Places', href: '/places' },
+  { label: 'Media', href: '/media' },
 ];
 
 export function Navbar(): React.JSX.Element {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-neutral-100">
-      <div className="container-site">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <Link href="/" className="hover:opacity-70 transition-opacity">
-            <Image
-              src="/logo-black.svg"
-              alt="SITED"
-              width={120}
-              height={24}
-              priority
-              unoptimized
-            />
-          </Link>
+    <>
+      {/* ── Desktop Navbar (hidden on mobile) ── */}
+      <header className="hidden md:flex flex-col fixed top-0 left-0 right-0 z-50">
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-caption text-neutral-500 hover:text-black transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/contact"
-              className="text-caption border border-black px-5 py-2 hover:bg-black hover:text-white transition-all duration-200"
-            >
-              Inquire
-            </Link>
-          </nav>
-
-          {/* Mobile Toggle */}
-          <button
-            className="md:hidden p-2 -mr-2"
-            onClick={() => setMenuOpen((o) => !o)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+        {/* ── Top utility bar ── */}
+        <div className="bg-neutral-50 border-b border-neutral-100 h-8 flex items-center">
+          <div className="container-site flex items-center justify-between w-full">
+            {/* Right: utility links with dividers */}
+            <div className="flex items-center">
+              {utilityLinks.map((link, i) => (
+                <span key={link.href} className="flex items-center">
+                  {i > 0 && <span className="text-neutral-300 mx-3 text-[10px]">|</span>}
+                  <Link
+                    href={link.href}
+                    className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400 hover:text-black transition-colors duration-150"
+                  >
+                    {link.label}
+                  </Link>
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Mobile Drawer */}
-      <div
-        className={cn(
-          'md:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-neutral-100',
-          menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0',
-        )}
-      >
-        <nav className="container-site py-6 flex flex-col gap-5">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-caption text-neutral-500 hover:text-black transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            onClick={() => setMenuOpen(false)}
-            className="text-caption border border-black px-5 py-3 text-center hover:bg-black hover:text-white transition-all duration-200"
-          >
-            Inquire
-          </Link>
-        </nav>
-      </div>
-    </header>
+        {/* ── Main navbar ── */}
+        <div className="bg-white/[0.97] backdrop-blur-sm border-b border-neutral-100/80">
+          <div className="container-site">
+            <div className="relative flex items-center h-[4.5rem]">
+
+              {/* Logo — left */}
+              <Link href="/" className="hover:opacity-60 transition-opacity duration-200 shrink-0">
+                <Image
+                  src="/logo-black.svg"
+                  alt="SITED"
+                  width={110}
+                  height={22}
+                  priority
+                  unoptimized
+                />
+              </Link>
+
+              {/* Nav links — absolute center */}
+              <nav className="absolute left-1/2 -translate-x-1/2 flex items-center gap-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-caption text-neutral-500 hover:text-black transition-colors duration-200 whitespace-nowrap"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+
+              {/* Inquire — right */}
+              <div className="ml-auto shrink-0">
+                <Link
+                  href="/contact"
+                  className="text-caption border border-black px-5 py-2 hover:bg-black hover:text-white transition-all duration-200"
+                >
+                  Inquire
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* ── Mobile Navbar (hidden on desktop) ── */}
+      <MobileNav />
+    </>
   );
 }

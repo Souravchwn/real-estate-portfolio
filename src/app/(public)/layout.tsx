@@ -26,7 +26,7 @@ export default async function PublicLayout({
   return (
     <>
       <Navbar />
-      <main className="pt-16 md:pt-20">{children}</main>
+      <main className="pt-14 md:pt-[6.5rem]">{children}</main>
       <Footer agencyName={agencyName} contactEmail={contactEmail} />
     </>
   );

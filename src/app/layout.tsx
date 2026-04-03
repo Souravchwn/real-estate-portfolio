@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
+import { GlobalLoader } from '@/components/ui/GlobalLoader';
 import './globals.css';
 
 const inter = Inter({
@@ -44,7 +45,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <GlobalLoader />
+        {children}
+      </body>
     </html>
   );
 }

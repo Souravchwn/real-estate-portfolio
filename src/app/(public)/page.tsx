@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { getRepository } from '@/lib/repositories';
 import { PropertyCard } from '@/components/domain/PropertyCard';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 import { Button } from '@/components/ui/Button';
+import { HeroSection } from '@/components/sections/HeroSection';
 
 
 export const metadata: Metadata = {
@@ -15,58 +15,14 @@ export const metadata: Metadata = {
 export default async function HomePage(): Promise<React.JSX.Element> {
   const repo = getRepository();
   const schema = await repo.getSchema();
-  const { heroTitle, heroSubtitle, agencyName } = schema.siteContent;
+  const { heroSubtitle, agencyName } = schema.siteContent;
   const featuredProperties = schema.properties.filter((p) => p.featured);
   const allProperties = schema.properties;
 
   return (
     <>
       {/* ─── HERO ─── */}
-      <section className="relative h-screen min-h-[600px] flex items-end overflow-hidden bg-neutral-900">
-        {/* Background Image */}
-        <Image
-          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2400&q=90"
-          alt="Luxury California property at golden hour"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-60"
-          placeholder="blur"
-          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI4MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzFhMWExYSIvPjwvc3ZnPg=="
-        />
-
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-        {/* Hero Content */}
-        <div className="container-site relative z-10 pb-16 md:pb-24">
-          <AnimatedSection delay={0.2}>
-            <p className="text-caption text-white/50 tracking-[0.3em] mb-6">{agencyName}</p>
-            <h1 className="text-display text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-3xl mb-6">
-              {heroTitle}
-            </h1>
-            <p className="text-white/70 text-base md:text-lg max-w-xl mb-10 leading-relaxed">
-              {heroSubtitle}
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button as="link" href="/projects" variant="primary" size="lg">
-                View Portfolio
-              </Button>
-              <Button as="link" href="/contact" variant="secondary" size="lg"
-                className="bg-transparent text-white border-white/50 hover:bg-white hover:text-black"
-              >
-                Inquire Now
-              </Button>
-            </div>
-          </AnimatedSection>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 right-8 md:right-12 z-10 flex flex-col items-center gap-2">
-          <div className="w-px h-12 bg-white/30 animate-pulse" />
-          <p className="text-caption text-white/30 [writing-mode:vertical-rl]">Scroll</p>
-        </div>
-      </section>
+      <HeroSection agencyName={agencyName} heroSubtitle={heroSubtitle} />
 
       {/* ─── STATS BAR ─── */}
       <section className="border-b border-neutral-100 bg-white">
