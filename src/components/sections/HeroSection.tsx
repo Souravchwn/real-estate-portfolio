@@ -53,16 +53,25 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
   const currentWords = PHRASES[index];
 
   return (
-    <section className="relative flex items-center overflow-hidden bg-neutral-50" style={{ minHeight: 'calc(100vh - 6.5rem)' }}>
+    <section className="relative flex items-center overflow-hidden bg-white" style={{ minHeight: 'calc(100vh - 6.5rem)' }}>
 
-      {/* Subtle grain texture — like the SITED brand paper/concrete */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.055] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+      {/* Grain / concrete texture */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.18] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
         <filter id="grain">
           <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
           <feColorMatrix type="saturate" values="0" />
         </filter>
         <rect width="100%" height="100%" filter="url(#grain)" />
       </svg>
+
+      {/* Faint vignette */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(255,255,255,0.55) 100%)',
+        }}
+      />
 
       {/* Left gold construction rail */}
       <motion.div
@@ -88,7 +97,8 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
         {/* Agency label */}
         <div className="overflow-hidden mb-10">
           <motion.p
-            className="text-caption tracking-[0.5em] text-neutral-400"
+            className="text-caption tracking-[0.5em]"
+            style={{ color: GOLD }}
             initial={{ y: '120%', opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
@@ -104,7 +114,7 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
               {currentWords.map((word, i) => (
                 <div key={word + i} className="overflow-hidden">
                   <motion.h1
-                    className="text-black leading-[0.88] tracking-tighter select-none"
+                    className="text-gray-900 leading-[0.88] tracking-tighter select-none"
                     style={{
                       fontSize: 'clamp(4rem, 10vw, 9rem)',
                       fontWeight: 900,
@@ -134,7 +144,7 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
 
         {/* Subtitle */}
         <motion.p
-          className="text-neutral-500 text-base md:text-lg max-w-md mb-12 leading-relaxed"
+          className="text-gray-500 text-base md:text-lg max-w-md mb-12 leading-relaxed"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 1.15 }}
@@ -163,7 +173,7 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
             href="/contact"
             variant="secondary"
             size="lg"
-            className="bg-transparent text-black border-black/30 hover:bg-black hover:text-white"
+            className="bg-transparent text-gray-900 border-gray-900/20 hover:bg-gray-900 hover:text-white"
           >
             Inquire Now
           </Button>
@@ -183,14 +193,14 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
       <div className="absolute bottom-8 right-8 md:right-12 z-10 flex flex-col items-center gap-3">
         <motion.div
           className="w-[1px] h-10"
-          style={{ background: `${GOLD}66`, transformOrigin: 'top' }}
+          style={{ background: `${GOLD}44`, transformOrigin: 'top' }}
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ duration: 0.6, delay: 1.9 }}
         />
         <motion.p
           className="text-caption [writing-mode:vertical-rl]"
-          style={{ color: `${GOLD}88` }}
+          style={{ color: `${GOLD}55` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 2.1 }}
