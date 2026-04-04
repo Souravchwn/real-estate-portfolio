@@ -27,7 +27,7 @@ export function Navbar(): React.JSX.Element {
       <header className="hidden md:flex flex-col fixed top-0 left-0 right-0 z-50">
 
         {/* ── Top utility bar ── */}
-        <div className="bg-neutral-50 border-b border-neutral-100 h-8 flex items-center">
+        <div className="bg-black border-b border-neutral-100 h-8 flex items-center">
           <div className="container-site flex items-center justify-between w-full">
             {/* Right: utility links with dividers */}
             <div className="flex items-center">
@@ -36,7 +36,7 @@ export function Navbar(): React.JSX.Element {
                   {i > 0 && <span className="text-neutral-300 mx-3 text-[10px]">|</span>}
                   <Link
                     href={link.href}
-                    className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400 hover:text-black transition-colors duration-150"
+                    className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400 hover:text-white transition-colors duration-150"
                   >
                     {link.label}
                   </Link>

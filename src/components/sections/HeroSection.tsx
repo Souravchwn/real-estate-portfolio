@@ -14,8 +14,7 @@ const GOLD = '#B8953F';
 // Phrases to cycle through — each phrase is an array of lines
 const PHRASES: string[][] = [
   ['ALWAYS', 'BUILDING.'],
-  ['SITED', 'IN', 'MOTION.'],
-  ['ALWAYS', 'BUILDING.'],
+  ['SITED', 'IN', 'MOTION.']
 ];
 
 const INTERVAL_MS = 3800;
