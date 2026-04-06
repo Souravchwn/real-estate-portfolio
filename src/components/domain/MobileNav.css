@@ -10,7 +10,7 @@
   background: #fff;
   border-bottom: 1px solid #e5e5e5;
   position: fixed;
-  top: 0;
+  top: 32px; /* offset below the utility bar */
   left: 0;
   right: 0;
   z-index: 100;

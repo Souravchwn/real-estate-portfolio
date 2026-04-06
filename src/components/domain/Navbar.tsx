@@ -91,6 +91,23 @@ export function Navbar(): React.JSX.Element {
         </div>
       </header>
 
+      {/* ── Mobile utility bar (hidden on desktop) ── */}
+      <div className="md:hidden bg-black fixed top-0 left-0 right-0 z-50 h-8 flex items-center px-4">
+        <div className="flex items-center">
+          {utilityLinks.map((link, i) => (
+            <span key={link.href} className="flex items-center">
+              {i > 0 && <span className="text-neutral-600 mx-3 text-[10px]">|</span>}
+              <Link
+                href={link.href}
+                className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400 hover:text-white transition-colors duration-150"
+              >
+                {link.label}
+              </Link>
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* ── Mobile Navbar (hidden on desktop) ── */}
       <MobileNav />
     </>
