@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { MobileNav } from './MobileNav';
 
 const utilityLinks = [
-  { label: 'Find a Property', href: '/projects' },
+  // { label: 'Find a Property', href: '/projects' },
   { label: 'Media', href: '/media' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -17,7 +17,7 @@ const navLinks = [
   { label: 'OWN', href: '/projects?filter=OWN' },
   { label: 'DROP', href: '/projects?filter=DROP' },
   { label: 'Places', href: '/places' },
-  { label: 'Media', href: '/media' },
+  // { label: 'Media', href: '/media' },
 ];
 
 export function Navbar(): React.JSX.Element {

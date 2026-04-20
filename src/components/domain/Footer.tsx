@@ -23,26 +23,26 @@ export function Footer({ agencyName, contactEmail }: FooterProps): React.JSX.Ele
               unoptimized
               className="mb-2"
             />
-            <p className="text-sm text-neutral-400">Luxury Real Estate Development · California</p>
+            {/* <p className="text-sm text-neutral-400">Luxury Real Estate Development · California</p> */}
           </div>
 
           {/* Links */}
           <nav className="flex flex-col sm:flex-row gap-4 sm:gap-10">
-            <Link href="/projects" className="text-caption text-neutral-500 hover:text-black transition-colors">
+            {/* <Link href="/projects" className="text-caption text-neutral-500 hover:text-black transition-colors">
               Portfolio
-            </Link>
+            </Link> */}
             <Link href="/about" className="text-caption text-neutral-500 hover:text-black transition-colors">
               About
             </Link>
             <Link href="/contact" className="text-caption text-neutral-500 hover:text-black transition-colors">
               Contact
             </Link>
-            <a
+            {/* <a
               href={`mailto:${contactEmail}`}
               className="text-caption text-neutral-500 hover:text-black transition-colors"
             >
               {contactEmail}
-            </a>
+            </a> */}
           </nav>
         </div>
 

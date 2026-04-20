@@ -25,7 +25,7 @@ export default async function HomePage(): Promise<React.JSX.Element> {
       <HeroSection agencyName={agencyName} heroSubtitle={heroSubtitle} />
 
       {/* ─── STATS BAR ─── */}
-      <section className="border-b border-neutral-100 bg-white">
+      {/* <section className="border-b border-neutral-100 bg-white">
         <div className="container-site">
           <div className="grid grid-cols-3 divide-x divide-neutral-100">
             {[
@@ -40,10 +40,10 @@ export default async function HomePage(): Promise<React.JSX.Element> {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ─── FEATURED DEVELOPMENTS ─── */}
-      <section className="py-24 md:py-32">
+      {/* <section className="py-24 md:py-32">
         <div className="container-site">
           <AnimatedSection className="mb-16">
             <p className="text-caption text-neutral-400 mb-3">Featured Developments</p>
@@ -62,9 +62,9 @@ export default async function HomePage(): Promise<React.JSX.Element> {
             </Button>
           </AnimatedSection>
         </div>
-      </section>
+      </section> */}
 
-      {/* ─── PHILOSOPHY SECTION ─── */}
+      {/* ─── PHILOSOPHY SECTION ───
       <section className="py-24 md:py-32 bg-neutral-50">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -100,7 +100,7 @@ export default async function HomePage(): Promise<React.JSX.Element> {
             </AnimatedSection>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ─── CTA SECTION ─── */}
       <section className="py-24 md:py-32 bg-black text-white">

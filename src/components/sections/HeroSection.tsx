@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/Button';
 
 interface HeroSectionProps {
   agencyName: string;
@@ -11,10 +10,9 @@ interface HeroSectionProps {
 
 const GOLD = '#B8953F';
 
-// Phrases to cycle through — each phrase is an array of lines
 const PHRASES: string[][] = [
   ['ALWAYS', 'BUILDING.'],
-  ['SITED', 'IN', 'MOTION.']
+  ['SITED', 'IN', 'MOTION.'],
 ];
 
 const INTERVAL_MS = 3800;
@@ -41,7 +39,66 @@ const wordVariants = {
   }),
 };
 
-export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): React.JSX.Element {
+// Buildings are positioned within the right panel (52% of viewport)
+// l values pushed right so nothing appears before 22% of the panel
+// maskImage on the panel fades first 22% transparent → no text overlap
+const BUILDINGS = [
+  { w: '30%', h: '52%', l: '10%', delay: 0.70, dur: 5.3, floors: [0.22, 0.44, 0.63, 0.80] },
+  { w: '14%', h: '64%', l: '48%', delay: 0.85, dur: 6.0, floors: [0.18, 0.35, 0.52, 0.68, 0.82] },
+  { w: '11%', h: '37%', l: '36%', delay: 1.00, dur: 4.9, floors: [0.30, 0.60] },
+  { w: '10%', h: '56%', l: '65%', delay: 1.15, dur: 5.6, floors: [0.20, 0.40, 0.60, 0.78] },
+];
+
+// CSS 3D wireframe box using transform-style: preserve-3d
+function WireBox({
+  size,
+  speed = 18,
+  tiltX = 12,
+  tiltYOffset = 0,
+  opacity = 1,
+}: {
+  size: number;
+  speed?: number;
+  tiltX?: number;
+  tiltYOffset?: number;
+  opacity?: number;
+}) {
+  const h = size / 2;
+  const faces = [
+    `translateZ(${h}px)`,
+    `rotateY(180deg) translateZ(${h}px)`,
+    `rotateY(90deg) translateZ(${h}px)`,
+    `rotateY(-90deg) translateZ(${h}px)`,
+    `rotateX(-90deg) translateZ(${h}px)`,
+    `rotateX(90deg) translateZ(${h}px)`,
+  ];
+
+  return (
+    <div style={{ perspective: size * 3.5, opacity }}>
+      <motion.div
+        style={{ width: size, height: size, transformStyle: 'preserve-3d', position: 'relative' }}
+        animate={{ rotateX: [tiltX, tiltX + 360], rotateY: [tiltYOffset, tiltYOffset + 360] }}
+        transition={{ duration: speed, repeat: Infinity, ease: 'linear' }}
+      >
+        {faces.map((t, i) => (
+          <div
+            key={i}
+            style={{
+              position: 'absolute',
+              width: size,
+              height: size,
+              border: `1px solid ${GOLD}${i < 2 ? '60' : '35'}`,
+              background: i === 4 ? `${GOLD}0C` : 'transparent',
+              transform: t,
+            }}
+          />
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+export function HeroSection({ agencyName }: HeroSectionProps): React.JSX.Element {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -52,10 +109,15 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
   const currentWords = PHRASES[index];
 
   return (
-    <section className="relative flex items-center overflow-hidden bg-white" style={{ minHeight: 'calc(100vh - 6.5rem)' }}>
-
-      {/* Grain / concrete texture */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.18] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+    <section
+      className="relative flex items-center overflow-hidden bg-white"
+      style={{ minHeight: 'calc(100vh - 6.5rem)' }}
+    >
+      {/* Grain texture */}
+      <svg
+        className="absolute inset-0 w-full h-full opacity-[0.16] pointer-events-none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <filter id="grain">
           <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
           <feColorMatrix type="saturate" values="0" />
@@ -63,35 +125,232 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
         <rect width="100%" height="100%" filter="url(#grain)" />
       </svg>
 
-      {/* Faint vignette */}
+      {/* Vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(255,255,255,0.55) 100%)',
+            'radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(255,255,255,0.5) 100%)',
         }}
       />
 
-      {/* Left gold construction rail */}
+      {/* ─────────────────────────────────────────
+          MOBILE 3D — hidden on desktop
+      ───────────────────────────────────────── */}
+
+      {/* Ambient glow behind cubes */}
+      <div
+        className="absolute md:hidden pointer-events-none"
+        style={{
+          top: 0,
+          right: '-5%',
+          width: '65%',
+          height: '50%',
+          background: `radial-gradient(ellipse at 70% 30%, ${GOLD}12 0%, transparent 70%)`,
+        }}
+      />
+
+      {/* Large cube — top right, partially off-screen for drama */}
       <motion.div
-        className="absolute left-[4rem] md:left-[6rem] top-0 bottom-0 w-[1px] pointer-events-none"
-        style={{ background: `linear-gradient(to bottom, transparent 5%, ${GOLD}44 40%, ${GOLD}44 60%, transparent 95%)` }}
+        className="absolute md:hidden pointer-events-none"
+        style={{ top: '5%', right: '-2%' }}
+        initial={{ opacity: 0, scale: 0.7 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <WireBox size={100} speed={20} tiltX={18} tiltYOffset={0} />
+      </motion.div>
+
+      {/* Small orbiting cube — offset so it peeks from behind the large one */}
+      <motion.div
+        className="absolute md:hidden pointer-events-none"
+        style={{ top: '17%', right: '22%' }}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <WireBox size={42} speed={13} tiltX={-8} tiltYOffset={45} opacity={0.7} />
+      </motion.div>
+
+      {/* Tiny accent cube */}
+      <motion.div
+        className="absolute md:hidden pointer-events-none"
+        style={{ top: '10%', right: '38%' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.4 }}
+      >
+        <WireBox size={22} speed={9} tiltX={30} tiltYOffset={90} opacity={0.45} />
+      </motion.div>
+
+      {/* Mobile perspective grid floor */}
+      <div
+        className="absolute bottom-0 left-0 right-0 md:hidden pointer-events-none"
+        style={{ height: '32%', perspective: '460px', perspectiveOrigin: '50% 100%' }}
+      >
+        <motion.div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: '-30%',
+            right: '-30%',
+            height: '100%',
+            rotateX: 68,
+            transformOrigin: 'bottom center',
+            backgroundImage: [
+              `linear-gradient(${GOLD}18 1px, transparent 1px)`,
+              `linear-gradient(90deg, ${GOLD}18 1px, transparent 1px)`,
+            ].join(', '),
+            backgroundSize: '34px 34px',
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 0.9 }}
+        />
+        {/* Ground rule */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            bottom: '0',
+            left: 0,
+            right: 0,
+            height: '1px',
+            background: `linear-gradient(to right, transparent, ${GOLD}60, transparent)`,
+          }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.4, delay: 1.3 }}
+        />
+      </div>
+
+      {/* ─────────────────────────────────────────
+          DESKTOP 3D SCENE — hidden on mobile
+          Panel is 52% wide from right edge.
+          maskImage fades 0→22% transparent so
+          buildings never overlap text.
+      ───────────────────────────────────────── */}
+      <div
+        className="absolute top-0 right-0 bottom-0 hidden md:block pointer-events-none"
+        style={{
+          width: '52%',
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 24%)',
+          maskImage: 'linear-gradient(to right, transparent 0%, black 24%)',
+        }}
+      >
+        {/* Perspective floor grid */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            perspective: '700px',
+            perspectiveOrigin: '50% 98%',
+          }}
+        >
+          <motion.div
+            style={{
+              position: 'absolute',
+              bottom: '17%',
+              left: '-20%',
+              right: '-20%',
+              height: '58%',
+              rotateX: 63,
+              transformOrigin: 'bottom center',
+              backgroundImage: [
+                `linear-gradient(${GOLD}1A 1px, transparent 1px)`,
+                `linear-gradient(90deg, ${GOLD}1A 1px, transparent 1px)`,
+              ].join(', '),
+              backgroundSize: '50px 50px',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 3, delay: 0.6, ease: 'easeInOut' }}
+          />
+        </div>
+
+        {/* Ground plane rule */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            bottom: '17%',
+            left: 0,
+            right: 0,
+            height: '1px',
+            background: `linear-gradient(to right, transparent 0%, ${GOLD}50 30%, ${GOLD}50 70%, transparent 100%)`,
+          }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 1.6, delay: 1.2, ease: 'easeInOut' }}
+        />
+
+        {/* Building wireframe silhouettes */}
+        {BUILDINGS.map((b, i) => (
+          <motion.div
+            key={i}
+            style={{
+              position: 'absolute',
+              bottom: '17%',
+              left: b.l,
+              width: b.w,
+              height: b.h,
+              transformOrigin: 'bottom center',
+              borderLeft: `1px solid ${GOLD}30`,
+              borderRight: `1px solid ${GOLD}30`,
+              borderTop: `1px solid ${GOLD}60`,
+              background: `linear-gradient(to top, ${GOLD}0E 0%, transparent 55%)`,
+              boxShadow: `0 -8px 24px 0 ${GOLD}18`,
+            }}
+            initial={{ scaleY: 0, opacity: 0 }}
+            animate={{ scaleY: 1, opacity: 1, y: [0, -7, 0] }}
+            transition={{
+              scaleY: { duration: 1.4, delay: b.delay, ease: [0.22, 1, 0.36, 1] },
+              opacity: { duration: 0.7, delay: b.delay },
+              y: { duration: b.dur, delay: b.delay + 1.8, repeat: Infinity, ease: 'easeInOut' },
+            }}
+          >
+            {b.floors.map((frac) => (
+              <div
+                key={frac}
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  top: `${(1 - frac) * 100}%`,
+                  height: '1px',
+                  background: `${GOLD}1A`,
+                }}
+              />
+            ))}
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Left gold construction rail — desktop only */}
+      <motion.div
+        className="absolute hidden md:block md:left-[6rem] top-0 bottom-0 w-[1px] pointer-events-none"
+        style={{
+          background: `linear-gradient(to bottom, transparent 5%, ${GOLD}44 40%, ${GOLD}44 60%, transparent 95%)`,
+        }}
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
       />
 
-      {/* Horizontal gold scan — laser level sweep */}
-      <motion.div
+      {/* Horizontal scan line — plays once on load */}
+      {/* <motion.div
         className="absolute left-0 right-0 h-[1px] z-20 pointer-events-none"
-        style={{ background: `linear-gradient(to right, transparent 5%, ${GOLD}99 50%, transparent 95%)`, top: '48%' }}
+        style={{
+          background: `linear-gradient(to right, transparent 5%, ${GOLD}90 50%, transparent 95%)`,
+          top: '48%',
+        }}
         initial={{ scaleX: 0, opacity: 0.9 }}
         animate={{ scaleX: [0, 1, 1], opacity: [0.9, 0.9, 0] }}
         transition={{ duration: 1.1, times: [0, 0.55, 1], ease: 'easeInOut', delay: 0.25 }}
-      />
+      /> */}
 
-      {/* Hero content */}
-      <div className="container-site relative z-10">
+      {/* ─── Hero text content ─── */}
+      <div className="container-site relative z-10 w-full">
+        {/* On desktop, text lives in the left ~50% naturally.
+            No hard constraint needed — the panel mask handles separation. */}
 
         {/* Agency label */}
         <div className="overflow-hidden mb-10">
@@ -106,18 +365,18 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
           </motion.p>
         </div>
 
-        {/* Rotating title — fixed height for tallest phrase (3 words) so layout never shifts */}
-        <div className="mb-11" style={{ height: 'clamp(12rem, 28vw, 26rem)', overflow: 'hidden' }}>
+        {/* Rotating headline */}
+        <div
+          className="mb-8 md:mb-11"
+          style={{ height: 'clamp(9rem, 28vw, 26rem)', overflow: 'hidden' }}
+        >
           <AnimatePresence mode="wait" initial={false}>
-            <div key={index} className="space-y-1">
+            <div key={index} className="space-y-0">
               {currentWords.map((word, i) => (
                 <div key={word + i} className="overflow-hidden">
                   <motion.h1
-                    className="text-gray-900 leading-[0.88] tracking-tighter select-none"
-                    style={{
-                      fontSize: 'clamp(4rem, 10vw, 9rem)',
-                      fontWeight: 900,
-                    }}
+                    className="text-gray-900 tracking-tighter select-none"
+                    style={{ fontSize: 'clamp(3rem, 10vw, 9rem)', fontWeight: 900, lineHeight: 0.9 }}
                     custom={i}
                     variants={wordVariants}
                     initial="initial"
@@ -132,7 +391,7 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
           </AnimatePresence>
         </div>
 
-        {/* Gold rule — floor slab poured after words settle */}
+        {/* Gold rule */}
         <motion.div
           className="h-[2px] mb-8 max-w-[100px]"
           style={{ background: GOLD, transformOrigin: 'left' }}
@@ -140,43 +399,6 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 1.0 }}
         />
-
-        {/* Subtitle */}
-        <motion.p
-          className="text-gray-500 text-base md:text-lg max-w-md mb-12 leading-relaxed"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 1.15 }}
-        >
-          {heroSubtitle}
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          className="flex flex-wrap items-center gap-4"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut', delay: 1.35 }}
-        >
-          <Button
-            as="link"
-            href="/projects"
-            variant="primary"
-            size="lg"
-            className="bg-[#B8953F] border-[#B8953F] text-white hover:bg-[#9a7a32] hover:border-[#9a7a32]"
-          >
-            View Portfolio
-          </Button>
-          <Button
-            as="link"
-            href="/contact"
-            variant="secondary"
-            size="lg"
-            className="bg-transparent text-gray-900 border-gray-900/20 hover:bg-gray-900 hover:text-white"
-          >
-            Inquire Now
-          </Button>
-        </motion.div>
       </div>
 
       {/* Floor line */}
@@ -188,8 +410,8 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
         transition={{ duration: 1.6, ease: 'easeInOut', delay: 0.1 }}
       />
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 right-8 md:right-12 z-10 flex flex-col items-center gap-3">
+      {/* Scroll indicator — desktop only */}
+      <div className="absolute bottom-8 right-12 z-10 hidden md:flex flex-col items-center gap-3">
         <motion.div
           className="w-[1px] h-10"
           style={{ background: `${GOLD}44`, transformOrigin: 'top' }}
@@ -208,23 +430,25 @@ export function HeroSection({ agencyName, heroSubtitle }: HeroSectionProps): Rea
         </motion.p>
       </div>
 
-      {/* Blueprint corner markers */}
-      {(['top-6 left-6', 'top-6 right-6', 'bottom-20 left-6', 'bottom-20 right-6'] as const).map((pos) => (
-        <motion.div
-          key={pos}
-          className={`absolute ${pos} w-4 h-4 pointer-events-none`}
-          style={{
-            borderColor: `${GOLD}28`,
-            borderTopWidth: pos.includes('top') ? '1px' : 0,
-            borderBottomWidth: pos.includes('bottom') ? '1px' : 0,
-            borderLeftWidth: pos.includes('left') ? '1px' : 0,
-            borderRightWidth: pos.includes('right') ? '1px' : 0,
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 1.7 }}
-        />
-      ))}
+      {/* Blueprint corner markers — desktop only */}
+      {(['top-6 left-6', 'top-6 right-6', 'bottom-20 left-6', 'bottom-20 right-6'] as const).map(
+        (pos) => (
+          <motion.div
+            key={pos}
+            className={`absolute ${pos} w-4 h-4 pointer-events-none hidden md:block`}
+            style={{
+              borderColor: `${GOLD}28`,
+              borderTopWidth: pos.includes('top') ? '1px' : 0,
+              borderBottomWidth: pos.includes('bottom') ? '1px' : 0,
+              borderLeftWidth: pos.includes('left') ? '1px' : 0,
+              borderRightWidth: pos.includes('right') ? '1px' : 0,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 1.7 }}
+          />
+        ),
+      )}
     </section>
   );
 }
