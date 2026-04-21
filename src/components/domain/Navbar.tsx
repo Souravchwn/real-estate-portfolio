@@ -28,9 +28,9 @@ export function Navbar(): React.JSX.Element {
 
         {/* ── Top utility bar ── */}
         <div className="bg-black border-b border-neutral-100 h-8 flex items-center">
-          <div className="container-site flex items-center justify-between w-full">
-            {/* Right: utility links with dividers */}
-            <div className="flex items-center">
+          <div className="container-site flex items-center w-full">
+            {/* Right: utility links */}
+            <div className="flex items-center ml-auto">
               {utilityLinks.map((link, i) => (
                 <span key={link.href} className="flex items-center">
                   {i > 0 && <span className="text-neutral-300 mx-3 text-[10px]">|</span>}
