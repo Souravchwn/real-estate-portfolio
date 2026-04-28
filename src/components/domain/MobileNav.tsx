@@ -41,10 +41,10 @@ function ChevronRight() {
 const primaryLinks = [
   { label: 'Home', href: '/' },
   { label: 'Projects', href: '/projects' },
-  { label: 'MOVE', href: '/projects?filter=MOVE' },
-  { label: 'BUILD', href: '/projects?filter=BUILD' },
-  { label: 'OWN', href: '/projects?filter=OWN' },
-  { label: 'DROP', href: '/projects?filter=DROP' },
+  { label: 'MOVE', href: '/move' },
+  { label: 'BUILD', href: '/build' },
+  { label: 'OWN', href: '/own' },
+  { label: 'DROP', href: '/drop' },
   { label: 'Places', href: '/places' },
   { label: 'Media', href: '/media' },
 ];
