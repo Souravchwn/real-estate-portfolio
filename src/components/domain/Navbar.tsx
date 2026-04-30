@@ -3,21 +3,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { MobileNav } from './MobileNav';
+import { navLinks } from '@/data/navConfig';
 
 const utilityLinks = [
   // { label: 'Find a Property', href: '/projects' },
   { label: 'Media', href: '/media' },
   { label: 'Contact', href: '/contact' },
-];
-
-const navLinks = [
-  { label: 'Projects', href: '/projects' },
-  { label: 'MOVE', href: '/move' },
-  { label: 'BUILD', href: '/build' },
-  { label: 'OWN', href: '/own' },
-  { label: 'DROP', href: '/drop' },
-  { label: 'Places', href: '/places' },
-  // { label: 'Media', href: '/media' },
 ];
 
 export function Navbar(): React.JSX.Element {
@@ -93,7 +84,7 @@ export function Navbar(): React.JSX.Element {
 
       {/* ── Mobile utility bar (hidden on desktop) ── */}
       <div className="md:hidden bg-black fixed top-0 left-0 right-0 z-50 h-8 flex items-center px-4">
-        <div className="flex items-center">
+        <div className="flex items-center justify-end w-full">
           {utilityLinks.map((link, i) => (
             <span key={link.href} className="flex items-center">
               {i > 0 && <span className="text-neutral-600 mx-3 text-[10px]">|</span>}

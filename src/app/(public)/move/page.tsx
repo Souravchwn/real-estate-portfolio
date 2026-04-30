@@ -12,11 +12,11 @@ export default function MovePage(): React.JSX.Element {
       {/* Hero Section - Bold, commanding presence */}
       <section className="relative min-h-[70vh] flex items-center justify-center border-b border-neutral-100">
         <div className="container-site max-w-5xl mx-auto px-6 md:px-8 py-20 md:py-28 text-center">
-          <AnimatedSection>
+          {/* <AnimatedSection>
             <div className="inline-block mb-6 px-4 py-1.5 rounded-full bg-black/5 text-black/60 text-xs md:text-sm font-medium tracking-wide uppercase">
               SITED Development Group
             </div>
-          </AnimatedSection>
+          </AnimatedSection> */}
           
           <AnimatedSection delay={0.1}>
             <h1 className="text-[15vw] md:text-[8vw] lg:text-[7rem] font-black uppercase leading-[0.9] tracking-[-0.02em] text-black mb-8">

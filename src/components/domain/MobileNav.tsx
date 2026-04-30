@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
+import { navLinks } from '@/data/navConfig';
 import './MobileNav.css';
 
 /* ── Icon helpers (inline SVG — no extra deps) ── */
@@ -40,13 +41,7 @@ function ChevronRight() {
 
 const primaryLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'MOVE', href: '/move' },
-  { label: 'BUILD', href: '/build' },
-  { label: 'OWN', href: '/own' },
-  { label: 'DROP', href: '/drop' },
-  { label: 'Places', href: '/places' },
-  { label: 'Media', href: '/media' },
+  ...navLinks,
 ];
 
 const utilLinks = [

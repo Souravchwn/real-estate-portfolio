@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getRepository } from '@/lib/repositories';
 import { Navbar } from '@/components/domain/Navbar';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Footer } from '@/components/domain/Footer';
 
 
@@ -26,7 +27,10 @@ export default async function PublicLayout({
   return (
     <>
       <Navbar />
-      <main className="pt-14 md:pt-[6.5rem]">{children}</main>
+      <main className="pt-[5.5rem] md:pt-[6.5rem]">
+        <Breadcrumbs />
+        {children}
+      </main>
       <Footer agencyName={agencyName} contactEmail={contactEmail} />
     </>
   );
