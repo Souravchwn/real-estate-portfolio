@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { Playfair_Display } from 'next/font/google';
+import { Inter, Cormorant_Garamond } from 'next/font/google';
 import { GlobalLoader } from '@/components/ui/GlobalLoader';
 import './globals.css';
 
@@ -10,9 +9,10 @@ const inter = Inter({
   display: 'swap',
 });
 
-const playfair = Playfair_Display({
-  variable: '--font-playfair',
+const cormorant = Cormorant_Garamond({
+  variable: '--font-display',
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): React.JSX.Element {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <meta name="theme-color" content="#ffffff" />

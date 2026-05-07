@@ -29,7 +29,7 @@ export default function BuildPage(): React.JSX.Element {
               <p className="text-neutral-500 text-sm md:text-base uppercase tracking-wider mb-4">
                 Not just structures
               </p>
-              <p className="text-xl md:text-2xl lg:text-3xl text-black/80 font-light">
+              <p className="text-xl md:text-2xl lg:text-3xl text-black/80 font-light font-serif">
                 Build what lasts.
                 <br />
                 Build with purpose.
@@ -46,10 +46,10 @@ export default function BuildPage(): React.JSX.Element {
         <div className="container-site max-w-4xl mx-auto px-6 md:px-8">
           <div className="space-y-12">
             <AnimatedSection delay={0.2}>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-light text-black/70 leading-relaxed text-center">
-                "Building isn't just about what goes into the ground.
+              <p className="text-2xl md:text-3xl lg:text-4xl font-light text-black/70 leading-relaxed text-center font-serif">
+                &ldquo;Building isn&apos;t just about what goes into the ground.
                 <br />
-                It's about what grows from it."
+                It&apos;s about what grows from it.&rdquo;
               </p>
             </AnimatedSection>
 
@@ -83,8 +83,8 @@ export default function BuildPage(): React.JSX.Element {
             <p className="text-neutral-400 text-sm uppercase tracking-wider mb-6">
               The foundation is ready
             </p>
-            <p className="text-2xl md:text-3xl lg:text-4xl text-black font-light leading-relaxed">
-              The question isn't <span className="line-through text-neutral-300">if</span>.
+            <p className="text-2xl md:text-3xl lg:text-4xl text-black font-light leading-relaxed font-serif">
+              The question isn&apos;t <span className="line-through text-neutral-300">if</span>.
               <br />
               The question is <span className="font-bold">who builds with us</span>.
             </p>

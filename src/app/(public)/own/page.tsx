@@ -46,7 +46,7 @@ export default function OwnPage(): React.JSX.Element {
               <p className="text-neutral-400 text-sm uppercase tracking-wider mb-3">
                 Our belief
               </p>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-light text-black/80 leading-relaxed">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-light text-black/80 leading-relaxed font-serif">
                 "Ownership isn't just a document.
                 <br />
                 It's a stake in what comes next."
@@ -96,7 +96,7 @@ export default function OwnPage(): React.JSX.Element {
               <p className="text-neutral-500 text-sm uppercase tracking-wider mb-3">
                 The outcome we're building toward
               </p>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-black leading-tight">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-black leading-tight font-serif">
                 When families own, communities thrive.
                 <br />
                 When communities thrive, everyone wins.

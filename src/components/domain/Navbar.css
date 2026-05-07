@@ -1,0 +1,136 @@
+/* ─── Desktop Navbar — Patagonia-Inspired Hover ─── */
+
+/* ── Main bar ── */
+.navbar__main-bar {
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(229, 229, 229, 0.8);
+  position: relative;
+  z-index: 3;
+}
+
+/* ── Nav links container ── */
+.navbar__nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 100%;
+}
+
+/* ── Individual link wrapper ── */
+.navbar__link-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+/* ── Link styling ── */
+.navbar__link {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #737373;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.25s ease;
+}
+
+/* Bottom line indicator — grows on hover */
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+              left 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.navbar__link--active {
+  color: #000;
+}
+
+.navbar__link--active::after {
+  width: 100%;
+  left: 0;
+}
+
+.navbar__link:hover {
+  color: #000;
+}
+
+/* ── Hover description panel ── */
+.navbar__hover-panel {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+              opacity 0.3s ease;
+  opacity: 0;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar__hover-panel--open {
+  max-height: 120px;
+  opacity: 1;
+  border-bottom-color: #e5e5e5;
+}
+
+.navbar__hover-content {
+  padding: 1.25rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 56px;
+}
+
+.navbar__hover-description {
+  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #525252;
+  text-align: center;
+  line-height: 1.5;
+  animation: navDescFadeIn 0.3s ease forwards;
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+@keyframes navDescFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Backdrop overlay ── */
+.navbar__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.12);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.navbar__backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}

@@ -44,9 +44,9 @@ export default function DropPage(): React.JSX.Element {
           <div className="text-center mb-12">
             <AnimatedSection delay={0.2}>
               <p className="text-neutral-400 text-sm uppercase tracking-wider mb-2">
-                What does "Drop" mean?
+                What does &quot;Drop&quot; mean?
               </p>
-              <h2 className="text-2xl md:text-3xl font-medium text-black">
+              <h2 className="text-2xl md:text-3xl font-medium text-black font-serif">
                 Drop your contribution into the process.
               </h2>
             </AnimatedSection>
@@ -100,7 +100,7 @@ export default function DropPage(): React.JSX.Element {
               <p className="text-neutral-500 text-sm uppercase tracking-wider mb-4">
                 Drop something here
               </p>
-              <p className="text-xl md:text-2xl text-black/70 mb-6">
+              <p className="text-xl md:text-2xl text-black/70 mb-6 font-serif">
                 Ideas, feedback, questions — <br />
                 all of it belongs here.
               </p>

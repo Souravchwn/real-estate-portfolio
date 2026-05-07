@@ -40,7 +40,7 @@ function ChevronRight() {
 /* ── Data ── */
 
 const primaryLinks = [
-  { label: 'Home', href: '/' },
+  { label: 'Home', href: '/', description: undefined as string | undefined },
   ...navLinks,
 ];
 
@@ -53,8 +53,16 @@ const utilLinks = [
 
 export function MobileNav(): React.JSX.Element {
   const [open, setOpen] = useState(false);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const close = useCallback(() => setOpen(false), []);
+  const close = useCallback(() => {
+    setOpen(false);
+    setExpandedIndex(null);
+  }, []);
+
+  const toggleDescription = useCallback((index: number) => {
+    setExpandedIndex((prev) => (prev === index ? null : index));
+  }, []);
 
   /* lock body scroll when drawer is open */
   useEffect(() => {
@@ -137,16 +145,35 @@ export function MobileNav(): React.JSX.Element {
 
         {/* Primary links */}
         <div className="mobile-drawer__nav">
-          {primaryLinks.map((link) => (
-            <Link
-              key={link.href + link.label}
-              href={link.href}
-              className="mobile-drawer__link"
-              onClick={close}
-            >
-              {link.label}
-              <ChevronRight />
-            </Link>
+          {primaryLinks.map((link, index) => (
+            <div key={link.href + link.label} className="mobile-drawer__item">
+              <div className="mobile-drawer__link-row">
+                <Link
+                  href={link.href}
+                  className="mobile-drawer__link"
+                  onClick={close}
+                >
+                  {link.label}
+                </Link>
+                {link.description && (
+                  <button
+                    className={`mobile-drawer__expand ${expandedIndex === index ? 'mobile-drawer__expand--open' : ''}`}
+                    onClick={() => toggleDescription(index)}
+                    aria-label={`Show description for ${link.label}`}
+                  >
+                    <ChevronRight />
+                  </button>
+                )}
+                {!link.description && <ChevronRight />}
+              </div>
+              {link.description && (
+                <div
+                  className={`mobile-drawer__desc ${expandedIndex === index ? 'mobile-drawer__desc--open' : ''}`}
+                >
+                  <p className="mobile-drawer__desc-text">{link.description}</p>
+                </div>
+              )}
+            </div>
           ))}
         </div>
 

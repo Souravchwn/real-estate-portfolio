@@ -25,7 +25,7 @@ export default function MovePage(): React.JSX.Element {
           </AnimatedSection>
           
           <AnimatedSection delay={0.15}>
-            <p className="text-xl md:text-2xl lg:text-3xl text-black/70 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl md:text-2xl lg:text-3xl text-black/70 max-w-3xl mx-auto leading-relaxed font-medium font-serif">
               Move now. Shape what comes next.
             </p>
           </AnimatedSection>
@@ -37,10 +37,10 @@ export default function MovePage(): React.JSX.Element {
         <div className="container-site max-w-4xl mx-auto px-6 md:px-8">
           <div className="space-y-16 md:space-y-20">
             <AnimatedSection delay={0.1}>
-              <p className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.2] tracking-[-0.01em]">
-                Don't wait for it.
+              <p className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-[1.2] tracking-[-0.01em] font-serif">
+                Don&apos;t wait for it.
                 <br />
-                <span className="text-neutral-400">Don't watch it happen.</span>
+                <span className="text-neutral-400">Don&apos;t watch it happen.</span>
                 <br />
                 Change how it happens.
               </p>
@@ -49,7 +49,7 @@ export default function MovePage(): React.JSX.Element {
             <AnimatedSection delay={0.2}>
               <div className="grid md:grid-cols-2 gap-8 md:gap-12 border-l-4 border-black pl-6 md:pl-8">
                 <p className="text-neutral-600 text-lg md:text-xl leading-relaxed">
-                  We don't build for communities.
+                  We don&apos;t build for communities.
                 </p>
                 <p className="text-black text-xl md:text-2xl font-semibold leading-relaxed">
                   We build with them.
@@ -59,7 +59,7 @@ export default function MovePage(): React.JSX.Element {
 
             <AnimatedSection delay={0.3}>
               <div className="bg-neutral-50 p-8 md:p-12 rounded-3xl">
-                <p className="text-neutral-800 text-xl md:text-2xl lg:text-3xl leading-relaxed font-light italic">
+                <p className="text-neutral-800 text-xl md:text-2xl lg:text-3xl leading-relaxed font-light italic font-serif">
                   “SITED brings people in before anything exists—<br />
                   shaping what gets built, together.”
                 </p>

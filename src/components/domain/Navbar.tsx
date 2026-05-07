@@ -2,8 +2,10 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useCallback } from 'react';
 import { MobileNav } from './MobileNav';
 import { navLinks } from '@/data/navConfig';
+import './Navbar.css';
 
 const utilityLinks = [
   // { label: 'Find a Property', href: '/projects' },
@@ -12,6 +14,16 @@ const utilityLinks = [
 ];
 
 export function Navbar(): React.JSX.Element {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const handleMouseEnter = useCallback((index: number) => {
+    setHoveredIndex(index);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredIndex(null);
+  }, []);
+
   return (
     <>
       {/* ── Desktop Navbar (hidden on mobile) ── */}
@@ -38,7 +50,7 @@ export function Navbar(): React.JSX.Element {
         </div>
 
         {/* ── Main navbar ── */}
-        <div className="bg-white/[0.97] backdrop-blur-sm border-b border-neutral-100/80">
+        <div className="navbar__main-bar">
           <div className="container-site">
             <div className="relative flex items-center h-[4.5rem]">
 
@@ -55,15 +67,23 @@ export function Navbar(): React.JSX.Element {
               </Link>
 
               {/* Nav links — absolute center */}
-              <nav className="absolute left-1/2 -translate-x-1/2 flex items-center gap-8">
-                {navLinks.map((link) => (
-                  <Link
+              <nav
+                className="navbar__nav-links"
+                onMouseLeave={handleMouseLeave}
+              >
+                {navLinks.map((link, index) => (
+                  <div
                     key={link.href}
-                    href={link.href}
-                    className="text-caption text-neutral-500 hover:text-black transition-colors duration-200 whitespace-nowrap"
+                    className="navbar__link-wrapper"
+                    onMouseEnter={() => handleMouseEnter(index)}
                   >
-                    {link.label}
-                  </Link>
+                    <Link
+                      href={link.href}
+                      className={`navbar__link ${hoveredIndex === index ? 'navbar__link--active' : ''}`}
+                    >
+                      {link.label}
+                    </Link>
+                  </div>
                 ))}
               </nav>
 
@@ -80,6 +100,31 @@ export function Navbar(): React.JSX.Element {
             </div>
           </div>
         </div>
+
+        {/* ── Hover description panel ── */}
+        <div
+          className={`navbar__hover-panel ${hoveredIndex !== null ? 'navbar__hover-panel--open' : ''}`}
+          onMouseEnter={() => {
+            if (hoveredIndex !== null) setHoveredIndex(hoveredIndex);
+          }}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="container-site">
+            <div className="navbar__hover-content">
+              {hoveredIndex !== null && navLinks[hoveredIndex]?.description && (
+                <p className="navbar__hover-description" key={hoveredIndex}>
+                  {navLinks[hoveredIndex].description}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Backdrop overlay ── */}
+        <div
+          className={`navbar__backdrop ${hoveredIndex !== null ? 'navbar__backdrop--open' : ''}`}
+          onMouseEnter={handleMouseLeave}
+        />
       </header>
 
       {/* ── Mobile utility bar (hidden on desktop) ── */}

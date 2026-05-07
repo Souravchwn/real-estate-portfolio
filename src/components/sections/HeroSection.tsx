@@ -375,7 +375,7 @@ export function HeroSection({ agencyName }: HeroSectionProps): React.JSX.Element
               {currentWords.map((word, i) => (
                 <div key={word + i} className="overflow-hidden">
                   <motion.h1
-                    className="text-gray-900 tracking-tighter select-none"
+                    className="text-gray-900 tracking-tighter select-none font-serif"
                     style={{ fontSize: 'clamp(3rem, 10vw, 9rem)', fontWeight: 900, lineHeight: 0.9 }}
                     custom={i}
                     variants={wordVariants}

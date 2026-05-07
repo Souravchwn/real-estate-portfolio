@@ -37,7 +37,7 @@ export default function ProjectsPage(): React.JSX.Element {
               <p className="text-neutral-600 text-base md:text-lg uppercase tracking-wide mb-4">
                 The principle
               </p>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-black leading-relaxed">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-black leading-relaxed font-serif">
                 Strong communities aren't built from the ground up.
                 <br />
                 <span className="font-bold">They're built from the inside out.</span>
@@ -52,7 +52,7 @@ export default function ProjectsPage(): React.JSX.Element {
         <div className="container-site max-w-4xl mx-auto px-6 md:px-8">
           <AnimatedSection delay={0.2}>
             <div className="border-l-4 border-black pl-6 md:pl-8 py-2">
-              <p className="text-black text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
+              <p className="text-black text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-serif">
                 Housing is the entry point.
                 <br />
                 Ownership is the outcome.
@@ -97,7 +97,7 @@ export default function ProjectsPage(): React.JSX.Element {
 
             <AnimatedSection delay={0.35}>
               <div className="bg-black text-white rounded-2xl p-8 md:p-12 text-center">
-                <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed">
+                <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed font-serif">
                   This is how neighborhoods reshape themselves.
                   <br />
                   <span className="font-bold block mt-4">This is how stability becomes generational.</span>
