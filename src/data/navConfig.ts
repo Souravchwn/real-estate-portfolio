@@ -38,27 +38,17 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
   {
     label: "What's Taking Shape",
-    href: '/projects',
+    href: '/whats-taking-shape',
     description: 'Projects, ideas, and systems in motion.',
   },
   {
-    label: 'Move',
-    href: '/move',
-    description: 'Step into the movement.',
-  },
-  {
     label: 'Join',
-    href: '/build',
+    href: '/join',
     description: 'Be part of what gets built.',
   },
   {
-    label: 'Signal',
-    href: '/drop',
-    description: 'Follow updates, momentum, and activity in real time.',
-  },
-  {
-    label: 'Built By',
-    href: '/places',
+    label: 'About Us',
+    href: '/about-us',
     description: 'The people, partners, and vision behind the movement.',
   },
 ];

@@ -21,7 +21,7 @@ export default function ProjectsPage(): React.JSX.Element {
           
           <AnimatedSection delay={0.1}>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-[1.2] tracking-[-0.02em] max-w-4xl">
-              We don't start with buildings.
+              We don&apos;t start with buildings.
               <br />
               <span className="text-neutral-400">We start with people.</span>
             </h1>
@@ -38,9 +38,9 @@ export default function ProjectsPage(): React.JSX.Element {
                 The principle
               </p>
               <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-black leading-relaxed font-serif">
-                Strong communities aren't built from the ground up.
+                Strong communities aren&apos;t built from the ground up.
                 <br />
-                <span className="font-bold">They're built from the inside out.</span>
+                <span className="font-bold">They&apos;re built from the inside out.</span>
               </p>
             </div>
           </AnimatedSection>
