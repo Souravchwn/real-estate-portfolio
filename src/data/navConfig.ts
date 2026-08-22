@@ -36,6 +36,11 @@ export interface NavLink {
  * @type {NavLink[]}
  */
 export const navLinks: NavLink[] = [
+    {
+    label: 'About Us',
+    href: '/about-us',
+    description: 'The people, partners, and vision behind the movement.',
+  },
   {
     label: "What's Taking Shape",
     href: '/whats-taking-shape',
@@ -46,9 +51,5 @@ export const navLinks: NavLink[] = [
     href: '/join',
     description: 'Be part of what gets built.',
   },
-  {
-    label: 'About Us',
-    href: '/about-us',
-    description: 'The people, partners, and vision behind the movement.',
-  },
+
 ];

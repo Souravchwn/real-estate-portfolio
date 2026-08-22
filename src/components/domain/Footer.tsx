@@ -31,7 +31,7 @@ export function Footer({ agencyName, contactEmail }: FooterProps): React.JSX.Ele
             {/* <Link href="/projects" className="text-caption text-neutral-500 hover:text-black transition-colors">
               Portfolio
             </Link> */}
-            <Link href="/about" className="text-caption text-neutral-500 hover:text-black transition-colors">
+            <Link href="/about-us" className="text-caption text-neutral-500 hover:text-black transition-colors">
               About
             </Link>
             <Link href="/contact" className="text-caption text-neutral-500 hover:text-black transition-colors">

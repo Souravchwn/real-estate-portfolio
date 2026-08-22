@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 import { navLinks } from '@/data/navConfig';
+// @ts-ignore: CSS side-effect import without module declarations
 import './MobileNav.css';
 
 /* ── Icon helpers (inline SVG — no extra deps) ── */

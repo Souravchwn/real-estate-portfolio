@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
 export const metadata: Metadata = {
@@ -10,43 +9,53 @@ export const metadata: Metadata = {
 
 export default function BuiltByPage(): React.JSX.Element {
   return (
-    <main className="min-h-screen bg-white">
-      {/* ── Hero: Full-bleed founders image with overlay ── */}
-      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-end overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/sited/founders.png"
-            alt="Terrence Large and Larry Beyince"
-            fill
-            priority
-            className="object-cover object-top"
-          />
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
-        </div>
+    <main className="bg-white">
+      {/* ── Hero: Light background, staggered names ── */}
+      {/* ── Hero: Dark background, staggered names ── */}
+<section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden bg-black">
+  {/* Dark gradient overlay for depth */}
+  <div className="absolute inset-0 bg-gradient-to-br from-black via-black/90 to-black/80" />
 
-        {/* Hero content */}
-        <div className="relative z-10 container-site max-w-6xl mx-auto px-6 md:px-8 pb-16 md:pb-24">
-          <AnimatedSection>
-            <div className="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white/70 text-xs md:text-sm font-medium tracking-wide uppercase border border-white/10">
-              Built By
-            </div>
-          </AnimatedSection>
+  <div className="relative z-10 container-site max-w-6xl mx-auto px-6 md:px-8 pb-8 md:pb-12">
+    {/* Badge */}
+    <AnimatedSection>
+      <div className="inline-block mb-8 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white/70 text-xs md:text-sm font-medium tracking-wide uppercase border border-white/10">
+        Built By
+      </div>
+    </AnimatedSection>
 
-          <AnimatedSection delay={0.1}>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-[-0.02em] max-w-4xl">
-              Terrence Large
-              <br />
-              <span className="text-white/60">+ Larry Beyince</span>
-            </h1>
-          </AnimatedSection>
-        </div>
-      </section>
+    {/* Names – each one animates separately */}
+    <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6">
+      <AnimatedSection delay={0.1}>
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-[-0.02em]">
+          Terrence Large
+        </h1>
+      </AnimatedSection>
+
+      <AnimatedSection delay={0.15}>
+        <span className="text-white/40 text-3xl md:text-5xl lg:text-6xl font-light block md:inline text-center">
+          ★
+        </span>
+      </AnimatedSection>
+
+      <AnimatedSection delay={0.2}>
+        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-[-0.02em]">
+          Larry Beyince
+        </h2>
+      </AnimatedSection>
+    </div>
+
+    {/* Subtitle */}
+    <AnimatedSection delay={0.25}>
+      <p className="text-white/50 text-lg md:text-xl max-w-2xl mt-6 font-light">
+        Social Impact Through Economic Development
+      </p>
+    </AnimatedSection>
+  </div>
+</section>
 
       {/* ── Tagline Banner ── */}
-      <section className="py-14 md:py-20 border-b border-neutral-100">
+      <section className="py-8 md:py-12 border-b border-neutral-100">
         <div className="container-site max-w-4xl mx-auto px-6 md:px-8">
           <AnimatedSection delay={0.15}>
             <div className="text-center">
@@ -61,10 +70,9 @@ export default function BuiltByPage(): React.JSX.Element {
       </section>
 
       {/* ── Narrative Story Section ── */}
-      <section className="py-20 md:py-28">
+      <section className="py-12 md:py-16">
         <div className="container-site max-w-4xl mx-auto px-6 md:px-8">
           <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-16 items-start">
-            {/* Left: Section Label */}
             <AnimatedSection delay={0.2}>
               <div>
                 <div className="w-12 h-0.5 bg-black mb-6" />
@@ -74,29 +82,24 @@ export default function BuiltByPage(): React.JSX.Element {
               </div>
             </AnimatedSection>
 
-            {/* Right: Story */}
             <AnimatedSection delay={0.25}>
-              <div className="space-y-8">
+              <div className="space-y-6">
                 <p className="text-lg md:text-xl text-black/80 leading-relaxed font-serif">
                   SITED was founded on a simple belief: real development begins with people.
                 </p>
-
                 <p className="text-neutral-600 leading-relaxed">
                   Before development begins, there is community — families, neighborhoods, and
                   local voices. Growth should create opportunities for the people who live
                   there, not displacement or exclusion.
                 </p>
-
                 <p className="text-neutral-600 leading-relaxed">
                   That belief brought Terrence Large and Larry Beyince together.
                 </p>
-
                 <p className="text-neutral-600 leading-relaxed">
                   With a shared commitment to community investment, long term value, and
                   purposeful development, they founded SITED, Social Impact Through Economic
                   Development, as a platform built on principle.
                 </p>
-
                 <p className="text-neutral-600 leading-relaxed">
                   SITED exists to place community at the center of development and prove that
                   investment, when guided by responsibility, access, and vision, can create
@@ -127,7 +130,6 @@ export default function BuiltByPage(): React.JSX.Element {
             </div>
           </AnimatedSection>
 
-          {/* Three Pillars */}
           <AnimatedSection delay={0.35}>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white rounded-2xl p-8 md:p-10 text-center border border-neutral-100 hover:border-neutral-200 transition-colors">
@@ -165,7 +167,7 @@ export default function BuiltByPage(): React.JSX.Element {
       </section>
 
       {/* ── Closing Statement ── */}
-      <section className="py-24 md:py-32">
+      <section className="py-16 md:py-20">
         <div className="container-site max-w-4xl mx-auto px-6 md:px-8 text-center">
           <AnimatedSection delay={0.4}>
             <div className="bg-black text-white rounded-2xl p-10 md:p-16">
