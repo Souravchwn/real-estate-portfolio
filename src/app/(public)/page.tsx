@@ -101,31 +101,6 @@ export default async function HomePage(): Promise<React.JSX.Element> {
           </div>
         </div>
       </section> */}
-
-      {/* ─── CTA SECTION ─── */}
-      <section className="py-24 md:py-32 bg-black text-white">
-        <div className="container-site text-center">
-          <AnimatedSection>
-            <p className="text-caption text-white/40 mb-4 tracking-[0.3em]">Private Inquiries</p>
-            <h2 className="text-display text-3xl md:text-5xl text-white mb-6 max-w-2xl mx-auto">
-              Ready to Discuss Acquisition Opportunities?
-            </h2>
-            <p className="text-white/60 text-base max-w-lg mx-auto mb-10">
-              We work exclusively with qualified investors and high-net-worth individuals. Contact us to
-              explore off-market opportunities and upcoming developments.
-            </p>
-            <Button
-              as="link"
-              href="/contact"
-              variant="secondary"
-              size="lg"
-              className="bg-white text-black border-white hover:bg-neutral-100"
-            >
-              Begin a Conversation
-            </Button>
-          </AnimatedSection>
-        </div>
-      </section>
     </>
   );
 }

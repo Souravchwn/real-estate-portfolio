@@ -83,8 +83,8 @@ export function ContactForm({ contactEmail }: ContactFormProps): React.JSX.Eleme
           name="message"
           required
           rows={5}
-          placeholder={`I am interested in discussing acquisition opportunities with ${contactEmail}`}
-          className="w-full border border-neutral-200 bg-white px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors placeholder:text-neutral-300 resize-none"
+          placeholder={`I am interested in discussing acquisition opportunities...`}
+          className="w-full border border-neutral-200 bg-white px-4 py-3.5 text-base font-medium focus:outline-none focus:border-black transition-colors placeholder:text-neutral-400 resize-none"
         />
       </div>
 
@@ -92,7 +92,7 @@ export function ContactForm({ contactEmail }: ContactFormProps): React.JSX.Eleme
         <button
           type="submit"
           disabled={isPending}
-          className="text-caption border border-black bg-black text-white px-8 py-3.5 hover:bg-neutral-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="text-sm font-bold tracking-[0.12em] uppercase border border-black bg-black text-white px-8 py-3.5 hover:bg-neutral-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
         >
           {isPending ? 'Sending...' : 'Send Inquiry'}
         </button>

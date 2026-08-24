@@ -7,65 +7,52 @@ import { navLinks } from '@/data/navConfig';
 // @ts-ignore: CSS side-effect import without module declarations
 import './MobileNav.css';
 
-/* ── Icon helpers (inline SVG — no extra deps) ── */
-
 function HamburgerIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-      <line x1="3" y1="6" x2="21" y2="6" />
-      <line x1="3" y1="12" x2="21" y2="12" />
-      <line x1="3" y1="18" x2="21" y2="18" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+      <line x1="3" y1="7" x2="21" y2="7" />
+      <line x1="3" y1="17" x2="21" y2="17" />
     </svg>
   );
 }
 
 function CloseIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
       <line x1="18" y1="6" x2="6" y2="18" />
       <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
 }
 
-
-
-function ChevronRight() {
+function ArrowUpRight() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mobile-drawer__chevron">
-      <polyline points="9 18 15 12 9 6" />
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="7" y1="17" x2="17" y2="7" />
+      <polyline points="7 7 17 7 17 17" />
     </svg>
   );
 }
 
-/* ── Data ── */
+const GOLD = '#B8953F';
 
-const primaryLinks = [
-  { label: 'Home', href: '/', description: undefined as string | undefined },
+const primaryNav = [
+  { label: 'Home', href: '/' },
   ...navLinks,
 ];
 
-const utilLinks = [
+const secondaryNav = [
+  { label: 'Media & News', href: '/media' },
   { label: 'Contact Us', href: '/contact' },
-  { label: 'Inquire', href: '/contact' },
 ];
-
-/* ── Component ── */
 
 export function MobileNav(): React.JSX.Element {
   const [open, setOpen] = useState(false);
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const close = useCallback(() => {
     setOpen(false);
-    setExpandedIndex(null);
   }, []);
 
-  const toggleDescription = useCallback((index: number) => {
-    setExpandedIndex((prev) => (prev === index ? null : index));
-  }, []);
-
-  /* lock body scroll when drawer is open */
   useEffect(() => {
     if (open) {
       document.body.classList.add('body--drawer-open');
@@ -79,7 +66,7 @@ export function MobileNav(): React.JSX.Element {
     <>
       {/* ── Top Bar (visible only on mobile) ── */}
       <div className="mobile-topbar md:hidden" role="banner">
-        {/* Left — hamburger */}
+        {/* Left — hamburger button */}
         <div className="mobile-topbar__left">
           <button
             className="mobile-topbar__btn"
@@ -87,32 +74,35 @@ export function MobileNav(): React.JSX.Element {
             aria-label="Open menu"
           >
             <HamburgerIcon />
+            <span className="text-[11px] font-medium tracking-[0.14em] uppercase ml-2 text-black">
+              Menu
+            </span>
           </button>
         </div>
 
-        {/* Center — full SITED logo with text */}
+        {/* Center — SITED logo */}
         <div className="mobile-topbar__center">
-          <Link href="/" aria-label="Home">
+          <Link href="/" aria-label="Home" onClick={close}>
             <Image
               src="/logo-black.svg"
               alt="SITED"
-              width={90}
-              height={18}
+              width={84}
+              height={17}
               priority
               unoptimized
             />
           </Link>
         </div>
 
-        {/* Right — inquire link */}
-        <div className="mobile-topbar__right">
+        {/* Right — Contact button */}
+        {/* <div className="mobile-topbar__right">
           <Link
             href="/contact"
-            className="mobile-topbar__inquire"
+            className="text-[10px] font-semibold tracking-[0.12em] uppercase border border-black/80 px-2.5 py-1 text-black hover:bg-black hover:text-white transition-all duration-200"
           >
-            Inquire
+            Contact
           </Link>
-        </div>
+        </div> */}
       </div>
 
       {/* ── Backdrop ── */}
@@ -122,19 +112,19 @@ export function MobileNav(): React.JSX.Element {
         aria-hidden="true"
       />
 
-      {/* ── Drawer ── */}
+      {/* ── Matte Dark Luxury Drawer ── */}
       <nav
         className={`mobile-drawer${open ? ' mobile-drawer--open' : ''}`}
         aria-label="Mobile navigation"
       >
-        {/* Header — centered logo + close */}
+        {/* Header — logo white + close */}
         <div className="mobile-drawer__header">
           <Link href="/" className="mobile-drawer__logo" onClick={close}>
             <Image
-              src="/logo-black.svg"
+              src="/logo-white.svg"
               alt="SITED"
-              width={90}
-              height={20}
+              width={88}
+              height={18}
               priority
               unoptimized
             />
@@ -144,52 +134,66 @@ export function MobileNav(): React.JSX.Element {
           </button>
         </div>
 
-        {/* Primary links */}
-        <div className="mobile-drawer__nav">
-          {primaryLinks.map((link, index) => (
-            <div key={link.href + link.label} className="mobile-drawer__item">
-              <div className="mobile-drawer__link-row">
+        {/* Drawer body */}
+        <div className="mobile-drawer__body">
+          {/* Main Navigation */}
+          <div className="px-6 pt-6 pb-2">
+            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-neutral-500 mb-4">
+              Navigation
+            </p>
+            <div className="flex flex-col gap-1">
+              {primaryNav.map((link, i) => (
                 <Link
+                  key={link.href + link.label}
                   href={link.href}
-                  className="mobile-drawer__link"
+                  className="mobile-drawer__nav-item group"
                   onClick={close}
                 >
-                  {link.label}
+                  <span className="text-[11px] font-mono text-[#B8953F] mr-3">
+                    0{i + 1}
+                  </span>
+                  <span className="text-[14px] font-medium tracking-[0.08em] uppercase text-white group-hover:text-[#B8953F] transition-colors">
+                    {link.label}
+                  </span>
+                  <span className="ml-auto text-neutral-500 group-hover:text-white transition-colors">
+                    <ArrowUpRight />
+                  </span>
                 </Link>
-                {link.description && (
-                  <button
-                    className={`mobile-drawer__expand ${expandedIndex === index ? 'mobile-drawer__expand--open' : ''}`}
-                    onClick={() => toggleDescription(index)}
-                    aria-label={`Show description for ${link.label}`}
-                  >
-                    <ChevronRight />
-                  </button>
-                )}
-                {!link.description && <ChevronRight />}
-              </div>
-              {link.description && (
-                <div
-                  className={`mobile-drawer__desc ${expandedIndex === index ? 'mobile-drawer__desc--open' : ''}`}
-                >
-                  <p className="mobile-drawer__desc-text">{link.description}</p>
-                </div>
-              )}
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Gold Accent Divider */}
+          <div className="px-6 py-4">
+            <div style={{ width: 32, height: 2, background: GOLD }} />
+          </div>
+
+          {/* Secondary / Utility Links */}
+          <div className="px-6 pb-6">
+            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-neutral-500 mb-3">
+              Explore
+            </p>
+            <div className="flex flex-col gap-2.5">
+              {secondaryNav.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-[13px] font-medium tracking-[0.05em] text-neutral-400 hover:text-white transition-colors flex items-center justify-between py-1"
+                  onClick={close}
+                >
+                  <span>{link.label}</span>
+                  <ArrowUpRight />
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Utility links */}
-        <div className="mobile-drawer__utils">
-          {utilLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="mobile-drawer__util-link"
-              onClick={close}
-            >
-              {link.label}
-            </Link>
-          ))}
+        {/* Drawer Footer */}
+        <div className="mobile-drawer__footer">
+          <p className="text-[9px] font-semibold tracking-[0.22em] uppercase text-neutral-500">
+            SITED DEVELOPMENT GROUP — CALIFORNIA
+          </p>
         </div>
       </nav>
     </>

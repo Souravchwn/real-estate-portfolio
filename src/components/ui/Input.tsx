@@ -12,13 +12,13 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const baseInputClass =
-  'w-full border border-neutral-200 bg-white px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors placeholder:text-neutral-300 disabled:opacity-50 disabled:bg-neutral-50';
+  'w-full border border-neutral-200 bg-white px-4 py-3.5 text-base font-medium focus:outline-none focus:border-black transition-colors placeholder:text-neutral-400 disabled:opacity-50 disabled:bg-neutral-50';
 
 export function Input({ label, error, className, id, ...rest }: InputProps): React.JSX.Element {
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={id} className="text-caption text-neutral-500 block mb-2">
+        <label htmlFor={id} className="text-xs font-bold tracking-[0.15em] uppercase text-neutral-600 block mb-2">
           {label}
         </label>
       )}
@@ -27,7 +27,7 @@ export function Input({ label, error, className, id, ...rest }: InputProps): Rea
         className={cn(baseInputClass, error && 'border-red-400', className)}
         {...rest}
       />
-      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-sm font-medium text-red-500">{error}</p>}
     </div>
   );
 }
@@ -36,7 +36,7 @@ export function Textarea({ label, error, className, id, ...rest }: TextareaProps
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={id} className="text-caption text-neutral-500 block mb-2">
+        <label htmlFor={id} className="text-xs font-bold tracking-[0.15em] uppercase text-neutral-600 block mb-2">
           {label}
         </label>
       )}
@@ -45,7 +45,7 @@ export function Textarea({ label, error, className, id, ...rest }: TextareaProps
         className={cn(baseInputClass, 'resize-none', error && 'border-red-400', className)}
         {...rest}
       />
-      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-sm font-medium text-red-500">{error}</p>}
     </div>
   );
 }

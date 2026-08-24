@@ -28,27 +28,18 @@ export function Footer({ agencyName, contactEmail }: FooterProps): React.JSX.Ele
 
           {/* Links */}
           <nav className="flex flex-col sm:flex-row gap-4 sm:gap-10">
-            {/* <Link href="/projects" className="text-caption text-neutral-500 hover:text-black transition-colors">
-              Portfolio
-            </Link> */}
-            <Link href="/about-us" className="text-caption text-neutral-500 hover:text-black transition-colors">
+            <Link href="/about-us" className="text-caption text-sm font-bold text-neutral-600 hover:text-black transition-colors">
               About
             </Link>
-            <Link href="/contact" className="text-caption text-neutral-500 hover:text-black transition-colors">
+            <Link href="/contact" className="text-caption text-sm font-bold text-neutral-600 hover:text-black transition-colors">
               Contact
             </Link>
-            {/* <a
-              href={`mailto:${contactEmail}`}
-              className="text-caption text-neutral-500 hover:text-black transition-colors"
-            >
-              {contactEmail}
-            </a> */}
           </nav>
         </div>
 
         {/* Copyright */}
         <div className="mt-10 pt-8 border-t border-neutral-100 flex flex-col sm:flex-row justify-between gap-2">
-          <p className="text-xs text-neutral-400">
+          <p className="text-sm font-medium text-neutral-500">
             © {year} {agencyName}. All rights reserved.
           </p>
         </div>

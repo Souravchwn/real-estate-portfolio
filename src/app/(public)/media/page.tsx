@@ -18,8 +18,10 @@ export default async function MediaPage(): Promise<React.JSX.Element> {
     <section className="py-20 md:py-28">
       <div className="container-site">
         <AnimatedSection className="mb-16 md:mb-20">
-          <p className="text-caption text-neutral-400 mb-3">Media Center</p>
-          <h1 className="text-display text-4xl md:text-5xl text-black max-w-2xl">
+          <p className="text-sm font-bold tracking-[0.2em] uppercase mb-4" style={{ color: '#B8953F' }}>
+            Media Center
+          </p>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-black max-w-2xl leading-[1.1]">
             Press, Publications & Video
           </h1>
         </AnimatedSection>

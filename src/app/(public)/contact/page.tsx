@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import { getRepository } from '@/lib/repositories';
 import { ContactForm } from '@/components/domain/ContactForm';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
-import { Mail, MapPin } from 'lucide-react';
-
-
+import { Users, Building2, Handshake } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -14,7 +12,25 @@ export const metadata: Metadata = {
 export default async function ContactPage(): Promise<React.JSX.Element> {
   const repo = getRepository();
   const schema = await repo.getSchema();
-  const { agencyName, contactEmail } = schema.siteContent;
+  const { contactEmail } = schema.siteContent;
+
+  const FEATURES = [
+    {
+      icon: Users,
+      title: 'PEOPLE FIRST',
+      description: 'We invest in people, neighborhoods, and the future.',
+    },
+    {
+      icon: Building2,
+      title: 'STRONGER COMMUNITIES',
+      description: 'Every project is an opportunity to create lasting impact.',
+    },
+    {
+      icon: Handshake,
+      title: 'BUILT TOGETHER',
+      description: 'We collaborate with partners who share our mission and values.',
+    },
+  ];
 
   return (
     <section className="py-20 md:py-28">
@@ -22,45 +38,61 @@ export default async function ContactPage(): Promise<React.JSX.Element> {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
           {/* Left Column — Info */}
           <AnimatedSection className="lg:col-span-2">
-            <p className="text-caption text-neutral-400 mb-4">Private Inquiries</p>
-            <h1 className="text-display text-3xl md:text-4xl lg:text-5xl text-black mb-8">
-              Let&apos;s Begin a Conversation
-            </h1>
-            <p className="text-neutral-600 text-base leading-relaxed mb-12">
-              We work exclusively with qualified investors and high-net-worth individuals seeking
-              architecturally significant real estate. All inquiries are handled directly by our
-              principals.
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-4" style={{ color: '#B8953F' }}>
+              LET&apos;S CONNECT
             </p>
 
-            <div className="space-y-5">
-              <div className="flex items-start gap-4">
-                <div className="border border-neutral-200 p-2.5 mt-0.5">
-                  <Mail size={14} className="text-neutral-400" />
-                </div>
-                <div>
-                  <p className="text-caption text-neutral-400 mb-1">Email</p>
-                  <a href={`mailto:${contactEmail}`} className="text-sm text-black hover:opacity-60 transition-opacity">
-                    {contactEmail}
-                  </a>
-                </div>
-              </div>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-black mb-6 leading-[1.08] font-bold">
+              Let&apos;s Build
+              <br />
+              What Matters.
+            </h1>
 
-              <div className="flex items-start gap-4">
-                <div className="border border-neutral-200 p-2.5 mt-0.5">
-                  <MapPin size={14} className="text-neutral-400" />
-                </div>
-                <div>
-                  <p className="text-caption text-neutral-400 mb-1">Offices</p>
-                  <p className="text-sm text-black">Los Angeles · Santa Barbara</p>
-                  <p className="text-xs text-neutral-400 mt-0.5">California, USA</p>
-                </div>
-              </div>
+            {/* Gold rule */}
+            <div className="mb-6" style={{ width: 56, height: 2, background: '#B8953F' }} />
+
+            <p className="text-neutral-700 text-base md:text-lg leading-relaxed mb-10 font-medium">
+              We bring together the right partners, capital, and opportunities to create real estate that
+              strengthens communities and expands opportunity.
+            </p>
+
+            {/* 3 Feature Items */}
+            <div className="space-y-6">
+              {FEATURES.map((item, index) => {
+                const IconComponent = item.icon;
+                const isLast = index === FEATURES.length - 1;
+                return (
+                  <div
+                    key={item.title}
+                    className={`flex items-start gap-5 ${!isLast ? 'border-b border-neutral-100 pb-6' : ''}`}
+                  >
+                    {/* Circle Icon Badge */}
+                    <div
+                      className="w-13 h-13 rounded-full flex items-center justify-center shrink-0"
+                      style={{ background: '#F4EFE6' }}
+                    >
+                      <IconComponent size={22} style={{ color: '#B8953F' }} />
+                    </div>
+
+                    <div>
+                      <p className="text-sm font-bold tracking-[0.12em] uppercase text-black mb-1">
+                        {item.title}
+                      </p>
+                      <p className="text-neutral-600 text-sm md:text-base font-medium leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </AnimatedSection>
 
           {/* Right Column — Form */}
           <AnimatedSection delay={0.15} className="lg:col-span-3 border-t lg:border-t-0 lg:border-l border-neutral-100 pt-12 lg:pt-0 lg:pl-16">
-            <p className="text-caption text-neutral-400 mb-8">Send an Inquiry</p>
+            <p className="text-sm font-bold tracking-[0.2em] uppercase mb-8" style={{ color: '#B8953F' }}>
+              Send an Inquiry
+            </p>
             <ContactForm contactEmail={contactEmail} />
           </AnimatedSection>
         </div>

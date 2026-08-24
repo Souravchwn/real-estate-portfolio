@@ -44,7 +44,7 @@ export function ProjectsGrid({ properties }: ProjectsGridProps): React.JSX.Eleme
             key={filter.value}
             onClick={() => setActiveFilter(filter.value)}
             className={cn(
-              'text-caption px-4 py-3 border-b-2 transition-all duration-200 -mb-px',
+              'text-caption px-4 py-2.5 border-b-2 transition-all duration-200 -mb-px',
               activeFilter === filter.value
                 ? 'border-black text-black'
                 : 'border-transparent text-neutral-400 hover:text-black',

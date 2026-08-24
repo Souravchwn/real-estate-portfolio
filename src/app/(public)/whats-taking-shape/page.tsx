@@ -2,125 +2,135 @@ import type { Metadata } from 'next';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
 export const metadata: Metadata = {
-  title: 'Projects — SITED Development Group',
+  title: "What's Taking Shape — SITED Development Group",
   description:
-    "We don't start with buildings. We start with people. Housing is the entry point. Ownership is the outcome. Community is the multiplier.",
+    "From real estate development to workforce training and community partnerships, we're creating opportunities that drive economic mobility and long-term impact in the communities we serve.",
 };
 
-export default function ProjectsPage(): React.JSX.Element {
+const GOLD = '#B8953F';
+
+const PILLARS = [
+  {
+    title: 'REAL ESTATE\nIN DEVELOPMENT',
+    body: 'Thoughtfully planned projects that bring quality housing, commercial spaces, and essential amenities to underserved communities.',
+    highlight: null,
+  },
+  {
+    title: 'YOUTH JOB TRAINING\n& WORKFORCE PATHWAYS',
+    body: 'Hands-on training, mentorship, and real-world experience preparing young people for careers in construction and skilled trades.',
+    highlight: 'Training today.\nBuilding leaders tomorrow.',
+  },
+  {
+    title: 'COMMUNITY\nPARTNERSHIPS',
+    body: 'Collaborating with local organizations, residents, and leaders to co-create solutions that reflect community needs and drive lasting change.',
+    highlight: null,
+  },
+  {
+    title: 'ECONOMIC MOBILITY\nTHROUGH OPPORTUNITY',
+    body: 'Creating pathways to stable jobs, entrepreneurship, and wealth-building opportunities that strengthen individuals, families, and neighborhoods.',
+    highlight: null,
+  },
+];
+
+export default function WhatsTakingShapePage(): React.JSX.Element {
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero Section - Bold thesis statement */}
-      <section className="relative min-h-[60vh] flex items-center justify-center border-b border-neutral-100">
-        <div className="container-site max-w-5xl mx-auto px-6 md:px-8 py-20 md:py-28">
-          <AnimatedSection>
-            <div className="inline-block mb-8 px-4 py-1.5 rounded-full bg-black/5 text-black/50 text-xs md:text-sm font-medium tracking-wide uppercase">
-              Our Approach
-            </div>
-          </AnimatedSection>
-          
-          <AnimatedSection delay={0.1}>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-[1.2] tracking-[-0.02em] max-w-4xl">
-              We don&apos;t start with buildings.
-              <br />
-              <span className="text-neutral-400">We start with people.</span>
-            </h1>
-          </AnimatedSection>
-        </div>
+    <main className="min-h-screen" style={{ background: '#f7f6f2' }}>
+
+      {/* ── Hero ── */}
+      <section className="pt-16 pb-10 md:pt-20 md:pb-14 px-6 md:px-12 lg:px-20 max-w-5xl mx-auto text-center">
+        <AnimatedSection>
+          <p
+            className="text-sm font-bold tracking-[0.2em] uppercase mb-5"
+            style={{ color: GOLD }}
+          >
+            What&apos;s Taking Shape
+          </p>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.08}>
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-black mb-6">
+            Building today.
+            <br />
+            Strengthening tomorrow.
+          </h1>
+        </AnimatedSection>
+
+        {/* Gold divider */}
+        <AnimatedSection delay={0.14}>
+          <div
+            className="mx-auto mb-8"
+            style={{ width: 56, height: 2, background: GOLD }}
+          />
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.18}>
+          <p className="text-neutral-700 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-medium">
+            From real estate development to workforce training and community partnerships,
+            we&apos;re creating opportunities that drive economic mobility and long-term impact
+            in the communities we serve.
+          </p>
+        </AnimatedSection>
       </section>
 
-      {/* The Principle - Core philosophy block */}
-      <section className="py-16 md:py-20">
-        <div className="container-site max-w-4xl mx-auto px-6 md:px-8">
-          <AnimatedSection delay={0.15}>
-            <div className="bg-neutral-50 rounded-2xl p-8 md:p-12">
-              <p className="text-neutral-600 text-base md:text-lg uppercase tracking-wide mb-4">
-                The principle
-              </p>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-black leading-relaxed font-serif">
-                Strong communities aren&apos;t built from the ground up.
-                <br />
-                <span className="font-bold">They&apos;re built from the inside out.</span>
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      {/* ── Four Pillars ── */}
+      <section className="px-6 md:px-12 lg:px-16 pb-14 md:pb-18 max-w-[1380px] mx-auto">
+        <AnimatedSection delay={0.22}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-neutral-200 bg-white shadow-sm">
+            {PILLARS.map((pillar, i) => (
+              <div
+                key={i}
+                className="p-8 md:p-10 lg:p-12 flex flex-col gap-5 border-b sm:border-b-0 lg:border-r border-neutral-200 last:border-b-0 lg:last:border-r-0"
+              >
+                {/* Gold rule */}
+                <div style={{ width: 36, height: 2, background: GOLD, flexShrink: 0 }} />
 
-      {/* Mission Statement - Bold tagline */}
-      <section className="py-12 md:py-16">
-        <div className="container-site max-w-4xl mx-auto px-6 md:px-8">
-          <AnimatedSection delay={0.2}>
-            <div className="border-l-4 border-black pl-6 md:pl-8 py-2">
-              <p className="text-black text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-serif">
-                Housing is the entry point.
-                <br />
-                Ownership is the outcome.
-                <br />
-                <span className="text-neutral-500">Community is the multiplier.</span>
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+                {/* Title */}
+                <p className="text-black text-xs md:text-sm font-bold tracking-[0.12em] uppercase leading-snug whitespace-pre-line">
+                  {pillar.title}
+                </p>
 
-      {/* Detailed Explanation - Layered insights */}
-      <section className="py-20 md:py-28">
-        <div className="container-site max-w-4xl mx-auto px-6 md:px-8">
-          <div className="space-y-16">
-            <AnimatedSection delay={0.25}>
-              <div className="grid gap-8">
-                <p className="text-neutral-700 text-lg md:text-xl leading-relaxed">
-                  We focus on neighborhoods that have been overlooked but not lacking potential.
+                {/* Body */}
+                <p className="text-neutral-800 text-sm md:text-base leading-relaxed flex-1 font-medium">
+                  {pillar.body}
                 </p>
-                <p className="text-neutral-700 text-lg md:text-xl leading-relaxed">
-                  On families who need access rather than just shelter.
-                </p>
-                <p className="text-neutral-700 text-lg md:text-xl leading-relaxed border-l-2 border-neutral-200 pl-6">
-                  And on systems that create long-term stability instead of temporary solutions.
-                </p>
+
+                {/* Gold highlight text */}
+                {pillar.highlight && (
+                  <p
+                    className="text-sm font-bold leading-snug whitespace-pre-line pt-2"
+                    style={{ color: GOLD }}
+                  >
+                    {pillar.highlight}
+                  </p>
+                )}
               </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.3}>
-              <div className="text-center py-8">
-                <p className="text-neutral-500 text-base uppercase tracking-wider mb-3">
-                  Our commitment
-                </p>
-                <p className="text-black text-xl md:text-2xl font-medium">
-                  Every project is intentional.
-                  <br />
-                  <span className="text-neutral-600">Every investment is human first.</span>
-                </p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.35}>
-              <div className="bg-black text-white rounded-2xl p-8 md:p-12 text-center">
-                <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed font-serif">
-                  This is how neighborhoods reshape themselves.
-                  <br />
-                  <span className="font-bold block mt-4">This is how stability becomes generational.</span>
-                </p>
-              </div>
-            </AnimatedSection>
+            ))}
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
-      {/* Projects Preview - Subtle teaser for what's next */}
-      <section className="py-16 md:py-20 border-t border-neutral-100">
-        <div className="container-site max-w-4xl mx-auto px-6 md:px-8 text-center">
-          <AnimatedSection delay={0.4}>
-            <p className="text-neutral-400 text-sm uppercase tracking-wider mb-4">
-              Coming soon
-            </p>
-            <p className="text-neutral-600 text-lg">
-              Active project listings and case studies will appear here.
-            </p>
-          </AnimatedSection>
-        </div>
+      {/* ── Community Statement ── */}
+      <section className="px-6 md:px-12 lg:px-20 pb-20 md:pb-28 max-w-5xl mx-auto">
+        <AnimatedSection delay={0.28}>
+          <div style={{ width: 56, height: 2, background: GOLD }} className="mb-10" />
+          <p className="text-black text-xl md:text-2xl lg:text-3xl font-light leading-relaxed font-serif">
+            We believe strong communities are built by investing in{' '}
+            <span className="font-semibold" style={{ color: GOLD }}>
+              people
+            </span>
+            , creating{' '}
+            <span className="font-semibold" style={{ color: GOLD }}>
+              jobs
+            </span>
+            , and developing{' '}
+            <span className="font-semibold" style={{ color: GOLD }}>
+              places
+            </span>{' '}
+            where everyone can thrive.
+          </p>
+        </AnimatedSection>
       </section>
+
     </main>
   );
 }

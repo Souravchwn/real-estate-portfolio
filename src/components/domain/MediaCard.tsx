@@ -55,7 +55,7 @@ export function MediaCard({ mediaItem, delay = 0 }: MediaCardProps): React.JSX.E
         {/* Content */}
         <div className="flex items-start justify-between gap-2 mb-2">
           <MediaTypeBadge type={mediaItem.mediaType} />
-          <p className="text-xs text-neutral-400 shrink-0">
+          <p className="text-sm font-medium text-neutral-500 shrink-0">
             {new Date(mediaItem.publishedDate).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'short',
@@ -65,12 +65,12 @@ export function MediaCard({ mediaItem, delay = 0 }: MediaCardProps): React.JSX.E
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-serif font-normal leading-snug text-black group-hover:opacity-60 transition-opacity duration-200 mb-2">
+        <h3 className="text-xl font-serif font-medium leading-snug text-black group-hover:opacity-60 transition-opacity duration-200 mb-2">
           {mediaItem.title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-neutral-600 line-clamp-2">
+        <p className="text-base text-neutral-600 font-medium line-clamp-2">
           {mediaItem.description}
         </p>
       </Link>

@@ -17,9 +17,9 @@
   --color-sold: #737373;
   --color-pre-dev: #92400e;
 
-  /* Typography */
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-display);
+  /* Typography — Instrument Serif (Headlines) & Inter (Body & Subheaders) */
+  --font-sans: var(--font-sans), 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-serif), 'Instrument Serif', Georgia, serif;
 
   /* Spacing */
   --spacing-section: 6rem;
@@ -40,8 +40,10 @@ html {
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans), 'Inter', system-ui, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 400;
   line-height: 1.6;
+  font-size: 15px;
 }
 
 /* ─── Custom Scrollbar (Webkit) ─── */
@@ -65,34 +67,41 @@ body {
 }
 
 /* ─── Typography Utilities ─── */
+.font-sans {
+  font-family: var(--font-sans);
+}
+
 .font-serif {
-  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-serif);
+  font-weight: 400;
 }
 
 .text-display {
-  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-serif);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.1;
 }
 
 /* ─── Global Luxury Headings ─── */
-/* All headings use the calligraphic serif for a premium feel */
 h1, h2, h3, h4 {
-  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-serif);
+  font-weight: 400;
 }
 
 /* Utility for statement / pull-quote paragraphs */
 .text-luxury {
-  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-serif);
+  font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.25;
 }
 
 .text-caption {
+  font-family: var(--font-sans);
   font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -154,8 +163,8 @@ video {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  font-size: 0.6875rem;
-  font-weight: 500;
+  font-size: 0.8125rem;
+  font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--color-muted);
   background: none;
@@ -195,8 +204,8 @@ video {
 }
 
 .breadcrumb-link {
-  font-size: 0.6875rem;
-  font-weight: 400;
+  font-size: 0.8125rem;
+  font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--color-muted);
   text-decoration: none;
@@ -217,8 +226,8 @@ video {
 }
 
 .breadcrumb-current {
-  font-size: 0.6875rem;
-  font-weight: 500;
+  font-size: 0.8125rem;
+  font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--color-foreground);
   white-space: nowrap;

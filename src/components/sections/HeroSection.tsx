@@ -368,7 +368,7 @@ export function HeroSection({ agencyName }: HeroSectionProps): React.JSX.Element
         {/* Rotating headline */}
         <div
           className="mb-8 md:mb-11"
-          style={{ height: 'clamp(9rem, 28vw, 26rem)', overflow: 'hidden' }}
+          style={{ height: 'clamp(10rem, 30vw, 28rem)', overflow: 'hidden' }}
         >
           <AnimatePresence mode="wait" initial={false}>
             <div key={index} className="space-y-0">

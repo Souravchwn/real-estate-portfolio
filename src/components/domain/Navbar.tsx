@@ -36,10 +36,10 @@ export function Navbar(): React.JSX.Element {
             <div className="flex items-center ml-auto">
               {utilityLinks.map((link, i) => (
                 <span key={link.href} className="flex items-center">
-                  {i > 0 && <span className="text-neutral-300 mx-3 text-[10px]">|</span>}
+                  {i > 0 && <span className="text-neutral-300 mx-3 text-[11px]">|</span>}
                   <Link
                     href={link.href}
-                    className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400 hover:text-white transition-colors duration-150"
+                    className="text-[10px] font-medium tracking-[0.08em] uppercase text-neutral-400 hover:text-white transition-colors duration-150"
                   >
                     {link.label}
                   </Link>
@@ -87,16 +87,6 @@ export function Navbar(): React.JSX.Element {
                 ))}
               </nav>
 
-              {/* Inquire — right */}
-              <div className="ml-auto shrink-0">
-                <Link
-                  href="/contact"
-                  className="text-caption border border-black px-5 py-2 hover:bg-black hover:text-white transition-all duration-200"
-                >
-                  Inquire
-                </Link>
-              </div>
-
             </div>
           </div>
         </div>
@@ -132,10 +122,10 @@ export function Navbar(): React.JSX.Element {
         <div className="flex items-center justify-end w-full">
           {utilityLinks.map((link, i) => (
             <span key={link.href} className="flex items-center">
-              {i > 0 && <span className="text-neutral-600 mx-3 text-[10px]">|</span>}
+              {i > 0 && <span className="text-neutral-600 mx-3 text-[11px]">|</span>}
               <Link
                 href={link.href}
-                className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400 hover:text-white transition-colors duration-150"
+                className="text-[12px] font-semibold tracking-[0.12em] uppercase text-neutral-400 hover:text-white transition-colors duration-150"
               >
                 {link.label}
               </Link>

@@ -1,18 +1,20 @@
 import type { Metadata } from 'next';
-import { Inter, Cormorant_Garamond } from 'next/font/google';
+import { Inter, Instrument_Serif } from 'next/font/google';
 import { GlobalLoader } from '@/components/ui/GlobalLoader';
+import { ScrollManager } from '@/components/ui/ScrollManager';
 import './globals.css';
 
 const inter = Inter({
-  variable: '--font-inter',
+  variable: '--font-sans',
   subsets: ['latin'],
   display: 'swap',
 });
 
-const cormorant = Cormorant_Garamond({
-  variable: '--font-display',
+const instrumentSerif = Instrument_Serif({
+  variable: '--font-serif',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
   display: 'swap',
 });
 
@@ -40,13 +42,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>): React.JSX.Element {
   return (
-    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="antialiased">
         <GlobalLoader />
+        <ScrollManager />
         {children}
       </body>
     </html>
